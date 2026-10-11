@@ -334,11 +334,15 @@ const closeLightboxBtn = document.getElementById("closeLightbox");
 
 if (lightboxModal && lightboxImg) {
   const openLightbox = (tile) => {
-    const src = tile.getAttribute("data-img") || tile.querySelector("img")?.src;
+    const imgEl = tile.querySelector("img");
+    const src = imgEl ? (imgEl.currentSrc || imgEl.src) : tile.getAttribute("data-img");
     const title = tile.getAttribute("data-caption") || "";
     const desc = tile.getAttribute("data-desc") || "";
 
-    if (src) lightboxImg.src = src;
+    if (src) {
+      lightboxImg.src = src;
+      lightboxImg.alt = title;
+    }
     if (lightboxTitle) lightboxTitle.textContent = title;
     if (lightboxDesc) lightboxDesc.textContent = desc;
 
