@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sadakhetpunjab.netlify.app/sitemap.xml
+Sitemap: https://sadakhetpunjabindia.vercel.app/sitemap.xml
