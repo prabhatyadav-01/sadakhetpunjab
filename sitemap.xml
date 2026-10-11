@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://sadakhetpunjab.netlify.app/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://sadakhetpunjab.netlify.app/hero-bg.jpg</image:loc>
+      <image:title>Punjab Agriculture Fields Under Climate Pressure</image:title>
+      <image:caption>SADAKHET research study on climate change and agriculture in Punjab</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadakhetpunjab.netlify.app/banner/01-wheat-heat-risk.png</image:loc>
+      <image:title>Wheat Heat Risk Infographic - Punjab Agriculture</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadakhetpunjab.netlify.app/banner/02-groundwater-pressure.png</image:loc>
+      <image:title>Groundwater Pressure and 110 Over-Exploited Blocks in Punjab</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadakhetpunjab.netlify.app/banner/03-adaptation-in-the-field.png</image:loc>
+      <image:title>Climate Adaptation in Punjab Agricultural Fields</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadakhetpunjab.netlify.app/banner/punjab-climate-agriculture-loop.gif</image:loc>
+      <image:title>Punjab Climate and Agriculture Seasonal Cycle Loop</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadakhetpunjab.netlify.app/banner/%E0%A8%AA%E0%A9%B0%E0%A8%9C%E0%A8%BE%E0%A8%AC%20%E0%A8%B5%E0%A8%BF%E0%A9%81%E0%A9%B1%E0%A8%9A%20%E0%A8%AC%E0%A8%A6%E0%A8%B2%E0%A8%A6%E0%A8%BE%20%E0%A8%AE%E0%A9%80%E0%A8%82%E0%A8%B9%2C%20%E0%A8%AC%E0%A8%A6%E0%A8%B2%E0%A8%A6%E0%A9%80%20%E0%A8%96%E0%A9%87%E0%A8%A4%E0%A9%80.png</image:loc>
+      <image:title>Changing Rainfall and Agriculture Transitions in Punjab</image:title>
+    </image:image>
+  </url>
+</urlset>

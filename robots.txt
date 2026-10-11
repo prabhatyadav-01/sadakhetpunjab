@@ -1,0 +1,5 @@
+# Robots.txt for SADAKHET - Punjab Agriculture & Climate Change Research
+User-agent: *
+Allow: /
+
+Sitemap: https://sadakhetpunjab.netlify.app/sitemap.xml
