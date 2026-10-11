@@ -1341,10 +1341,6 @@ img, picture, video, canvas, svg {
     .modal-card { padding: 20px 14px; border-radius: 18px; }
     .chapter-item { flex-direction: column; gap: 4px; }
 
-    .media-feature-card, .reel-feature-card { padding: 18px 14px; }
-    .doc-chapters-preview { grid-template-columns: 1fr; }
-    .phone-mockup { max-width: 100%; border-radius: 28px; padding: 10px; }
-    .phone-screen { height: 700px; border-radius: 20px; }
     .anthem-fab { right: 14px; bottom: 16px; width: 46px; height: 46px; }
 }
 
@@ -1406,6 +1402,9 @@ img, picture, video, canvas, svg {
     padding: 24px;
     border-radius: 24px;
     height: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .media-label {
@@ -1665,6 +1664,194 @@ img, picture, video, canvas, svg {
     background: linear-gradient(135deg, #e1306c, #fd1d1d);
     color: #fff;
     border-color: transparent;
+}
+
+/* Responsive Video Showcase (Mobile & Tablet Layouts) */
+@media (max-width: 900px) {
+    .video-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 36px;
+    }
+
+    .media-feature-card,
+    .reel-feature-card {
+        padding: 24px 20px;
+        border-radius: 22px;
+    }
+
+    .media-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .media-label span:first-child {
+        font-size: 0.9rem;
+    }
+
+    .doc-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .doc-card-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .phone-mockup {
+        max-width: 380px;
+        width: 100%;
+        margin: 8px auto 18px;
+        box-sizing: border-box;
+    }
+
+    .phone-screen {
+        height: 680px;
+    }
+
+    .reel-card-footer {
+        max-width: 380px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 540px) {
+    .video-showcase-grid {
+        gap: 22px;
+        margin-bottom: 28px;
+    }
+
+    .media-feature-card,
+    .reel-feature-card {
+        padding: 18px 14px;
+        border-radius: 18px;
+    }
+
+    .media-label {
+        font-size: 0.84rem;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .media-label span:first-child {
+        font-size: 0.84rem;
+        gap: 6px;
+    }
+
+    .preview-pill {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        letter-spacing: 0.3px;
+    }
+
+    .documentary-frame {
+        border-radius: 14px;
+    }
+
+    .documentary-overlay {
+        padding: 14px;
+        gap: 8px;
+    }
+
+    .documentary-overlay strong {
+        font-size: 1.15rem;
+    }
+
+    .documentary-overlay > span:last-child {
+        font-size: 0.78rem;
+    }
+
+    .documentary-play {
+        width: 48px;
+        height: 48px;
+        font-size: 0.95rem;
+    }
+
+    .doc-card-body {
+        margin-top: 14px;
+    }
+
+    .doc-card-header h3 {
+        font-size: 1.15rem;
+    }
+
+    .doc-duration-badge {
+        font-size: 0.72rem;
+        padding: 3px 8px;
+    }
+
+    .doc-card-desc {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 14px;
+    }
+
+    .doc-chapters-preview {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+
+    .doc-chapter-pill {
+        padding: 7px 10px;
+        font-size: 0.78rem;
+        border-radius: 8px;
+    }
+
+    .doc-modal-btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+
+    .phone-mockup {
+        max-width: 100%;
+        padding: 8px;
+        border-radius: 28px;
+        border-width: 2.5px;
+        margin: 6px auto 14px;
+    }
+
+    .phone-speaker {
+        width: 58px;
+        height: 9px;
+        margin: 2px auto 8px;
+    }
+
+    .phone-screen {
+        height: 610px;
+        border-radius: 20px;
+    }
+
+    .reel-card-footer {
+        max-width: 100%;
+    }
+
+    .reel-ig-btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .phone-screen {
+        height: 540px;
+    }
+
+    .media-feature-card,
+    .reel-feature-card {
+        padding: 14px 10px;
+    }
 }
 
 .media-subhead { margin: 38px 0 16px; }
