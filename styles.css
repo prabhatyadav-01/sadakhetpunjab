@@ -250,22 +250,44 @@ img, picture, video, canvas, svg {
 }
 
 /* Google Translate System Styles Clean Override */
-.goog-te-banner-frame.skiptranslate,
 .goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
 iframe.goog-te-banner-frame,
+iframe[class*="goog-te-banner"],
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-ORHb,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-y60bgq-OEVmcd,
+iframe.VIpgJd-ZVi9od-ORHb-OEVmcd,
+iframe[id*=":1"],
+iframe[id*="goog"],
+body > .skiptranslate,
+body > iframe:not(.instagram-reel-iframe),
 #goog-gt-tt,
 .goog-te-balloon-frame {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     height: 0 !important;
+    max-height: 0 !important;
     width: 0 !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
     pointer-events: none !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 body {
-    top: 0 !important;
+    top: 0px !important;
     position: static !important;
+}
+
+html {
+    top: 0px !important;
 }
 
 .goog-text-highlight {

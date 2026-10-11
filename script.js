@@ -527,9 +527,57 @@ const initLanguageToggle = () => {
     }
   });
 
+  // Active suppression of Google Translate top toolbar banner
+  const suppressGoogleBanner = () => {
+    if (document.body && document.body.style.top && document.body.style.top !== "0px") {
+      document.body.style.top = "0px";
+    }
+    if (document.documentElement && document.documentElement.style.top && document.documentElement.style.top !== "0px") {
+      document.documentElement.style.top = "0px";
+    }
+
+    const junkSelectors = [
+      ".goog-te-banner-frame",
+      "iframe.goog-te-banner-frame",
+      ".VIpgJd-ZVi9od-ORHb-OEVmcd",
+      ".VIpgJd-ZVi9od-aZ2wEe-wOHMyf",
+      ".VIpgJd-y60bgq-OEVmcd",
+      "iframe[id*=':1']",
+      "iframe[id*='goog']",
+      "#goog-gt-tt"
+    ];
+
+    junkSelectors.forEach((sel) => {
+      document.querySelectorAll(sel).forEach((el) => {
+        el.style.setProperty("display", "none", "important");
+        el.style.setProperty("visibility", "hidden", "important");
+        el.style.setProperty("height", "0px", "important");
+        el.style.setProperty("opacity", "0", "important");
+        el.style.setProperty("pointer-events", "none", "important");
+      });
+    });
+
+    if (document.body) {
+      Array.from(document.body.children).forEach((child) => {
+        if (child.id === "google_translate_element") return;
+        if (child.tagName === "IFRAME" && !child.classList.contains("instagram-reel-iframe")) {
+          child.style.setProperty("display", "none", "important");
+          child.style.setProperty("height", "0px", "important");
+        } else if (child.classList.contains("skiptranslate") && child.tagName === "DIV") {
+          child.style.setProperty("display", "none", "important");
+          child.style.setProperty("height", "0px", "important");
+        }
+      });
+    }
+  };
+
+  suppressGoogleBanner();
+  setInterval(suppressGoogleBanner, 300);
+
   // If saved state is Punjabi, ensure select is triggered once Google Translate loads
   if (isCurrentPunjabi()) {
     const observer = new MutationObserver(() => {
+      suppressGoogleBanner();
       const combo = document.querySelector(".goog-te-combo");
       if (combo) {
         if (combo.value !== "pa") {
@@ -539,7 +587,7 @@ const initLanguageToggle = () => {
         observer.disconnect();
       }
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
   }
 };
 
