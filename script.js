@@ -1,4 +1,9 @@
 // SADAKHET interactions and sourced charts.
+import { inject } from '@vercel/analytics';
+
+// Inject Vercel Web Analytics
+inject();
+
 const nav = document.getElementById("navbar");
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
