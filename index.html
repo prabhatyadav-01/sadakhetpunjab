@@ -431,30 +431,24 @@
           <article class="media-feature-card glass animate-on-scroll">
             <div class="media-label">
               <span><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary</span>
-              <span class="preview-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Teaser preview</span>
+              <span class="preview-pill"><i class="fa-solid fa-clock" aria-hidden="true"></i> In Progress</span>
             </div>
             <div class="documentary-frame" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
               <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
               <div class="documentary-overlay">
                 <span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
                 <strong>Punjab’s fields, under pressure</strong>
-                <span>Tap to inspect documentary preview &amp; chapters</span>
+                <span>Documentary in Progress · Tap to view</span>
               </div>
             </div>
             <div class="doc-card-body">
               <div class="doc-card-header">
                 <h3>Punjab’s fields, under pressure</h3>
-                <span class="doc-duration-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> 5 mins</span>
+                <span class="doc-duration-badge"><i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> In Progress</span>
               </div>
               <p class="doc-card-desc">An investigative exploration tracking tubewell stress across 110 over-exploited blocks, terminal heat shocks during wheat grain filling, and field silt rehabilitation following the 2025 floods.</p>
-              <div class="doc-chapters-preview">
-                <div class="doc-chapter-pill"><span class="ch-badge">01</span> The Sinking Table</div>
-                <div class="doc-chapter-pill"><span class="ch-badge">02</span> Scorched Grain</div>
-                <div class="doc-chapter-pill"><span class="ch-badge">03</span> Silted Plains &amp; Weeds</div>
-                <div class="doc-chapter-pill"><span class="ch-badge">04</span> Seeds of Recovery</div>
-              </div>
               <button type="button" class="btn-primary doc-modal-btn" id="docPreviewCardBtn">
-                <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Documentary Teaser &amp; Chapters
+                <i class="fa-solid fa-film" aria-hidden="true"></i> Watch Documentary
               </button>
             </div>
           </article>
@@ -587,31 +581,21 @@
 
   <!-- Documentary Preview Modal -->
   <dialog id="docModal" class="preview-modal" aria-labelledby="docModalTitle">
-    <div class="modal-card glass-dark">
+    <div class="modal-card glass-dark doc-progress-modal-card">
       <div class="modal-header">
-        <div class="modal-badge"><i class="fa-solid fa-film" aria-hidden="true"></i> Production Preview</div>
-        <button type="button" class="modal-close" id="closeDocModal" aria-label="Close preview modal">&times;</button>
+        <div class="modal-badge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> Production Status</div>
+        <button type="button" class="modal-close" id="closeDocModal" aria-label="Close modal">&times;</button>
       </div>
-      <div class="modal-body">
-        <h3 id="docModalTitle">Punjab’s fields, under pressure</h3>
-        <p class="modal-subtitle">Documentary Feature · CHE 110 · Lovely Professional University</p>
-        <div class="doc-meta-strip">
-          <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 14:30 mins</span>
-          <span><i class="fa-solid fa-closed-captioning" aria-hidden="true"></i> English &amp; Punjabi</span>
-          <span><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Edited by Prabhat Yadav</span>
+      <div class="modal-body doc-progress-body">
+        <div class="doc-progress-icon" aria-hidden="true">
+          <i class="fa-solid fa-film"></i>
         </div>
-        <p class="doc-synopsis">This investigative documentary charts the accelerating ecological crunch across Punjab's breadbasket—tracing historical tubewell reliance, the 2022 heat shock on wheat, the silted aftermath of the 2025 floods in Gurdaspur, and field solutions recommended by PAU.</p>
-        <h4 class="chapters-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Documentary Chapter Breakdown</h4>
-        <div class="chapter-list">
-          <div class="chapter-item"><span class="ch-time">00:00 – 03:15</span><div class="ch-info"><strong>Chapter 1: The Sinking Table</strong><p>110 over-exploited blocks and the escalating economics of submersible tubewells.</p></div></div>
-          <div class="chapter-item"><span class="ch-time">03:15 – 07:20</span><div class="ch-info"><strong>Chapter 2: Scorched Grain</strong><p>The 2022 March terminal heatwave and early maturity yield penalties.</p></div></div>
-          <div class="chapter-item"><span class="ch-time">07:20 – 11:05</span><div class="ch-info"><strong>Chapter 3: Silted Plains &amp; New Weeds</strong><p>The 2025 flood inundation, sand deposits, and agricultural rehabilitation.</p></div></div>
-          <div class="chapter-item"><span class="ch-time">11:05 – 14:30</span><div class="ch-info"><strong>Chapter 4: Seeds of Recovery</strong><p>Crop diversification, canal restoration, and resilient cropping models.</p></div></div>
-        </div>
+        <h3 id="docModalTitle">Documentary in Progress</h3>
+        <p class="modal-subtitle">Punjab’s fields, under pressure · SADAKHET</p>
+        <p class="doc-progress-desc">Our investigative documentary feature is currently in production and editing. Stay tuned for the upcoming release!</p>
       </div>
-      <div class="modal-footer">
-        <span class="teaser-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Full 4K master currently in post-production.</span>
-        <button type="button" class="btn-primary modal-action-btn" id="confirmDocModal">Close Preview</button>
+      <div class="modal-footer doc-progress-footer">
+        <button type="button" class="btn-primary modal-action-btn" id="confirmDocModal">Close</button>
       </div>
     </div>
   </dialog>

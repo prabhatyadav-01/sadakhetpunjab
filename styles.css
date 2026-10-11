@@ -2217,6 +2217,72 @@ img, picture, video, canvas, svg {
     cursor: pointer;
 }
 
+/* Documentary In Progress Modal */
+.doc-progress-modal-card {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.doc-progress-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 14px 6px 6px;
+}
+
+.doc-progress-icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.25), rgba(0, 119, 182, 0.25));
+    border: 2px solid rgba(144, 224, 239, 0.4);
+    color: var(--clr-water-light);
+    font-size: 1.75rem;
+    margin-bottom: 18px;
+    box-shadow: 0 0 28px rgba(42, 157, 143, 0.35);
+    animation: docIconPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes docIconPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(42, 157, 143, 0.25); }
+    50% { transform: scale(1.06); box-shadow: 0 0 32px rgba(42, 157, 143, 0.55); }
+}
+
+.doc-progress-body h3 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.doc-progress-body .modal-subtitle {
+    margin-bottom: 14px;
+    font-size: 0.88rem;
+    color: var(--clr-wheat);
+}
+
+.doc-progress-desc {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.94rem;
+    line-height: 1.6;
+    max-width: 380px;
+    margin: 0 auto 12px;
+}
+
+.doc-progress-footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.doc-progress-footer .modal-action-btn {
+    min-width: 130px;
+}
+
 /* Lightbox Specifics */
 .lightbox-modal {
     max-width: 960px;
