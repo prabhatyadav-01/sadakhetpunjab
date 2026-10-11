@@ -121,18 +121,49 @@ if (anthemAudio && anthemControls.length) {
     }
   }));
 
-  // Automatic audio start on site open
+  // Automatic audio start on site open with smart banner fallback
+  const autoplayBanner = document.getElementById("audioAutoplayBanner");
+  const closeBannerBtn = document.getElementById("closeAutoplayBanner");
   let hasStarted = false;
+
+  const hideBanner = () => {
+    if (autoplayBanner) autoplayBanner.classList.remove("show");
+  };
+
+  const showBanner = () => {
+    if (autoplayBanner && !hasStarted && anthemAudio.paused) {
+      autoplayBanner.classList.add("show");
+    }
+  };
+
+  if (closeBannerBtn) {
+    closeBannerBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      hideBanner();
+    });
+  }
+
+  if (autoplayBanner) {
+    autoplayBanner.addEventListener("click", () => {
+      startAutoplay();
+    });
+  }
+
   const startAutoplay = async () => {
-    if (hasStarted || !anthemAudio.paused) return;
+    if (hasStarted || !anthemAudio.paused) {
+      hideBanner();
+      return;
+    }
     try {
       anthemAudio.volume = volumeLevels[volIndex];
       await anthemAudio.play();
       hasStarted = true;
+      hideBanner();
       detachAutoplayListeners();
     } catch {
       // Browser autoplay policy prevented initial unmuted playback until interaction
       showAnthemState(false);
+      showBanner();
     }
   };
 
@@ -142,10 +173,12 @@ if (anthemAudio && anthemControls.length) {
     }
   };
 
-  const autoplayEvents = ["click", "pointerdown", "touchstart", "keydown", "scroll", "wheel"];
+  const autoplayEvents = ["click", "pointerdown", "touchstart", "keydown", "scroll", "wheel", "mousemove", "focus"];
   const detachAutoplayListeners = () => {
     autoplayEvents.forEach((evt) => window.removeEventListener(evt, onUserInteraction));
     document.removeEventListener("visibilitychange", onVisibility);
+    window.removeEventListener("pageshow", startAutoplay);
+    window.removeEventListener("load", startAutoplay);
   };
 
   autoplayEvents.forEach((evt) => {
@@ -158,6 +191,8 @@ if (anthemAudio && anthemControls.length) {
     }
   };
   document.addEventListener("visibilitychange", onVisibility);
+  window.addEventListener("pageshow", startAutoplay, { once: true });
+  window.addEventListener("load", startAutoplay, { once: true });
 
   // Attempt immediate play on page load
   startAutoplay();
