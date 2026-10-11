@@ -449,3 +449,100 @@ if (lightboxModal && lightboxImg) {
   });
 }
 
+// Punjabi / English Language Translation Toggle
+const initLanguageToggle = () => {
+  const langToggleBtn = document.getElementById("langToggleBtn");
+  const langTagText = document.getElementById("langTagText");
+  if (!langToggleBtn) return;
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  };
+
+  const isCurrentPunjabi = () => {
+    const cookie = getCookie("googtrans");
+    if (cookie && cookie.includes("/pa")) return true;
+    return localStorage.getItem("sadakhet_lang") === "pa";
+  };
+
+  const updateUI = (isPa) => {
+    if (isPa) {
+      langToggleBtn.classList.add("active-pa");
+      if (langTagText) langTagText.textContent = "English";
+      langToggleBtn.setAttribute("title", "Switch back to English / ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਵੇਖੋ");
+      langToggleBtn.setAttribute("aria-label", "Switch back to English");
+    } else {
+      langToggleBtn.classList.remove("active-pa");
+      if (langTagText) langTagText.textContent = "ਪੰਜਾਬੀ";
+      langToggleBtn.setAttribute("title", "Translate site to Punjabi / ਪੰਜਾਬੀ ਵਿੱਚ ਪੜ੍ਹੋ");
+      langToggleBtn.setAttribute("aria-label", "Translate site to Punjabi");
+    }
+  };
+
+  const setGoogleTransCookie = (val) => {
+    const host = window.location.hostname;
+    document.cookie = `googtrans=${val}; path=/;`;
+    if (host) {
+      document.cookie = `googtrans=${val}; path=/; domain=${host};`;
+      document.cookie = `googtrans=${val}; path=/; domain=.${host};`;
+    }
+  };
+
+  const triggerGoogleTranslate = (langCode) => {
+    const combo = document.querySelector(".goog-te-combo");
+    if (combo) {
+      combo.value = langCode;
+      combo.dispatchEvent(new Event("change"));
+      return true;
+    }
+    return false;
+  };
+
+  // Set initial UI state
+  updateUI(isCurrentPunjabi());
+
+  langToggleBtn.addEventListener("click", () => {
+    const currentlyPa = isCurrentPunjabi();
+    if (currentlyPa) {
+      // Revert to English
+      localStorage.setItem("sadakhet_lang", "en");
+      setGoogleTransCookie("/en/en");
+      updateUI(false);
+      const changed = triggerGoogleTranslate("en");
+      if (!changed) {
+        window.location.reload();
+      }
+    } else {
+      // Translate to Punjabi
+      localStorage.setItem("sadakhet_lang", "pa");
+      setGoogleTransCookie("/en/pa");
+      updateUI(true);
+      const changed = triggerGoogleTranslate("pa");
+      if (!changed) {
+        window.location.reload();
+      }
+    }
+  });
+
+  // If saved state is Punjabi, ensure select is triggered once Google Translate loads
+  if (isCurrentPunjabi()) {
+    const observer = new MutationObserver(() => {
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) {
+        if (combo.value !== "pa") {
+          combo.value = "pa";
+          combo.dispatchEvent(new Event("change"));
+        }
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+};
+
+initLanguageToggle();
+
+

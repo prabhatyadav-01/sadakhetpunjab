@@ -127,7 +127,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="styles.css">
@@ -143,7 +143,13 @@
         <li><a href="#floods">Floods &amp; crop health</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#media">Media</a></li>
         <li><a href="#sources">Sources</a></li><li><a href="#team">Team</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      <div class="nav-right">
+        <button type="button" class="lang-tag-btn" id="langToggleBtn" title="Translate site to Punjabi / ਪੰਜਾਬੀ ਵਿੱਚ ਪੜ੍ਹੋ" aria-label="Translate site to Punjabi">
+          <i class="fa-solid fa-language" aria-hidden="true"></i>
+          <span class="lang-tag-text" id="langTagText">ਪੰਜਾਬੀ</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
     </div>
   </nav>
 
@@ -621,6 +627,19 @@
       </div>
     </div>
   </dialog>
+
+  <!-- Google Translate Element Container (Hidden) -->
+  <div id="google_translate_element"></div>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'pa,en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script type="module" src="./script.js"></script>
 </body>
