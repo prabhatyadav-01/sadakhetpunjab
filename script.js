@@ -2,25 +2,102 @@
 const nav = document.getElementById("navbar");
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
+const navDropdowns = document.querySelectorAll(".nav-dropdown details");
+
+// Helper to auto-collapse all open dropdowns
+const closeAllDropdowns = () => {
+  navDropdowns.forEach((details) => {
+    if (details.open) {
+      details.open = false;
+    }
+  });
+};
+
+// Helper to collapse mobile nav menu
+const closeMobileNav = () => {
+  if (navLinks && navLinks.classList.contains("open")) {
+    navLinks.classList.remove("open");
+    if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+  }
+};
 
 if (navToggle && navLinks) {
-  navToggle.addEventListener("click", () => {
+  navToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     const isOpen = navLinks.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    if (!isOpen) {
+      closeAllDropdowns();
+    }
   });
 
+  // When any navigation link is clicked (including dropdown links), auto-collapse menu and dropdowns
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeAllDropdowns();
+      closeMobileNav();
     });
   });
 }
 
+// Auto-collapse when clicking outside the navbar
+document.addEventListener("click", (e) => {
+  if (nav && !nav.contains(e.target)) {
+    closeAllDropdowns();
+    closeMobileNav();
+  }
+});
+
+// Auto-collapse dropdowns and mobile menu on scroll / moving down
+let lastScrollY = window.scrollY;
+
 if (nav) {
-  const updateNavbar = () => nav.classList.toggle("scrolled", window.scrollY > 60);
+  const updateNavbar = () => {
+    const currentScrollY = window.scrollY;
+    nav.classList.toggle("scrolled", currentScrollY > 60);
+
+    const deltaY = Math.abs(currentScrollY - lastScrollY);
+    // Auto-collapse if user scrolls or moves down by more than 15px
+    if (deltaY > 15 || (currentScrollY > 70 && deltaY > 6)) {
+      closeAllDropdowns();
+      closeMobileNav();
+    }
+    lastScrollY = currentScrollY;
+  };
+
   updateNavbar();
   window.addEventListener("scroll", updateNavbar, { passive: true });
+}
+
+// Touchmove handler for responsive mobile auto-collapse
+window.addEventListener("touchmove", () => {
+  const currentScrollY = window.scrollY;
+  if (Math.abs(currentScrollY - lastScrollY) > 18) {
+    closeAllDropdowns();
+    closeMobileNav();
+  }
+}, { passive: true });
+
+// Close on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeAllDropdowns();
+    closeMobileNav();
+  }
+});
+
+// Desktop hover support for dropdowns (non-touch devices)
+if (window.matchMedia && window.matchMedia("(hover: hover)").matches) {
+  document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
+    const details = dropdown.querySelector("details");
+    if (!details) return;
+    dropdown.addEventListener("mouseenter", () => {
+      details.open = true;
+    });
+    dropdown.addEventListener("mouseleave", () => {
+      details.open = false;
+    });
+  });
 }
 
 if ("IntersectionObserver" in window) {
