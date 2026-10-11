@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a3a26">
+  <title>SADAKHET | Punjab Climate &amp; Agriculture Research</title>
+  <meta name="description" content="A research-led look at climate pressures on Punjab agriculture: 152% groundwater exploitation, agro-climatic zones, terminal heat, flood damage, and crop diversification.">
+  <meta name="keywords" content="Punjab agriculture, Punjab climate change, groundwater crisis Punjab, PAU agro-climatic zones, wheat heatwave 2022, stubble burning CAQM, 2025 Punjab floods, Lovely Professional University, CHE 110">
+  <meta name="author" content="Prabhat Yadav, Lovely Professional University">
+
+  <!-- Open Graph / WhatsApp / Facebook Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SADAKHET">
+  <meta property="og:title" content="SADAKHET | Punjab Climate &amp; Agriculture Research">
+  <meta property="og:description" content="Empirical study of climate pressures on Punjab agriculture: groundwater depletion, heatwaves, 2025 flood aftermath, and cropping resilience.">
+  <meta property="og:image" content="./hero-bg.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Punjab agricultural fields under climate pressure - SADAKHET">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card Preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SADAKHET | Punjab Climate &amp; Agriculture Research">
+  <meta name="twitter:description" content="Research-led analysis on groundwater deficit, wheat heatwave impacts, 2025 flood aftermath, and cropping resilience in Punjab.">
+  <meta name="twitter:image" content="./hero-bg.jpg">
+  <meta name="twitter:image:alt" content="Punjab agricultural fields - SADAKHET">
+
+  <!-- Favicon (SVG Seedling & Water Drop emblem) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231a3a26' stroke='%2340916c' stroke-width='4'/%3E%3Cpath d='M50 20 C65 20 80 35 80 52 C80 67 65 80 50 80 C50 60 50 40 50 20 Z' fill='%2340916c'/%3E%3Cpath d='M50 25 C38 25 25 38 25 52 C25 65 38 78 50 78 Z' fill='%230077b6'/%3E%3Cpath d='M50 80 L50 42' stroke='%23e9c46a' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Preload Critical Hero Background for Instant Paint -->
+  <link rel="preload" as="image" href="hero-bg.jpg" fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo"><i class="fa-solid fa-seedling" aria-hidden="true"></i> SADAKHET</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#overview">Overview</a></li><li><a href="#climate">Climate</a></li>
+        <li class="nav-dropdown"><details><summary>Case studies <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary><ul class="case-study-menu"><li><a href="#groundwater">Groundwater</a></li><li><a href="#heatwave">Wheat heat</a></li><li><a href="#stubble">Stubble</a></li></ul></details></li>
+        <li><a href="#zones">Agro-zones</a></li>
+        <li><a href="#floods">Floods &amp; crop health</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#media">Media</a></li>
+        <li><a href="#sources">Sources</a></li><li><a href="#team">Team</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero-overlay"></div><div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div><div class="hero-orb orb-3"></div><div class="hero-orb orb-4"></div>
+    <div class="hero-content">
+
+      <h1>Punjab’s fields,<br><span>under pressure</span></h1>
+      <p>Groundwater stress, hotter growing seasons and flood shocks are changing what it takes to grow food in Punjab.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary anthem-control" data-anthem-control type="button" aria-pressed="false">
+          <i class="fa-solid fa-music anthem-icon" aria-hidden="true"></i>
+          <span class="anthem-copy"><span>Punjab, Saadi Dharti</span><small class="anthem-status">Starting anthem…</small></span>
+        </button>
+        <audio id="anthemAudio" preload="none">
+          <source src="punjab-saadi-dharti.mp3" type="audio/mpeg">
+        </audio>
+        <a href="#media" class="btn-secondary"><i class="fa-solid fa-play" aria-hidden="true"></i> Documentary &amp; gallery</a>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none"><path class="wave-path wave1" d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120 Z"/><path class="wave-path wave2" d="M0,80 C360,20 1080,120 1440,80 L1440,120 L0,120 Z"/></svg></div>
+  </header>
+
+  <main>
+    <section id="overview" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Research snapshot</span>
+          <h2><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> A food-producing region at a turning point</h2>
+          <p>Recent assessments show some improvement in groundwater pressure, alongside serious exposure to heat, fire and flood damage. Each figure below is labelled with its reporting period.</p>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-droplet stat-icon blue" aria-hidden="true"></i><span class="stat-num">110</span><span class="stat-unit"> / 153</span><p>groundwater assessment blocks remain over-exploited in the 2025–26 Punjab assessment</p></article>
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-gauge-high stat-icon red" aria-hidden="true"></i><span class="stat-num">152.22</span><span class="stat-unit">%</span><p>stage of groundwater extraction in that assessment</p></article>
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-fire stat-icon red" aria-hidden="true"></i><span class="stat-num">5,114</span><p>CAQM-recorded paddy fire counts for the full 2025 season</p></article>
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-cloud-showers-heavy stat-icon blue" aria-hidden="true"></i><span class="stat-num">4.74</span><span class="stat-unit"> lakh acres</span><p>of farmland reported submerged during Punjab’s 2025 floods</p></article>
+        </div>
+        <div class="two-col">
+          <div class="col-text animate-on-scroll">
+            <h3>Why this matters</h3>
+            <p>Punjab’s irrigation, crop choices and food procurement systems are tightly connected. The state’s 2025–26 assessment still puts annual groundwater extraction above the annual extractable resource, even as the reported extraction rate improved from earlier assessments.</p>
+            <p>Climate and weather shocks add pressure at different points in the crop calendar: March heat can shorten wheat grain filling; intense monsoon rain can submerge standing crops, damage soil and delay the next sowing window.</p>
+            <div class="info-badge green"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Read reporting periods beside figures; seasonal counts are not annual totals.</div>
+          </div>
+          <div class="col-chart glass animate-on-scroll">
+            <h3 class="chart-title">Groundwater: annual resource and extraction</h3>
+            <div class="chart-container"><canvas id="groundwaterChart" role="img" aria-label="Annual extractable groundwater resource: 17.29 billion cubic metres; extraction: 26.32 billion cubic metres"></canvas></div>
+            <p class="chart-insight">2025–26 state assessment · billion cubic metres (BCM)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="groundwater" class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag red-tag">Water security</span>
+          <h2><i class="fa-solid fa-droplet" aria-hidden="true"></i> Groundwater: a persistent deficit</h2>
+          <p>The latest Punjab assessment reports lower extraction than in the earlier comparison year, but withdrawals still exceed the resource considered available for annual extraction.</p>
+        </div>
+        <div class="two-col reverse animate-on-scroll">
+          <div class="col-text">
+            <h3>What the 2025–26 assessment says</h3>
+            <p>Punjab’s reported annual extraction was <strong>26.32 BCM</strong>, compared with <strong>17.29 BCM</strong> of annual extractable groundwater resource. The extraction stage was <strong>152.22%</strong>. Annual recharge was estimated at 19.14 BCM.</p>
+            <ul class="fact-list">
+              <li><i class="fa-solid fa-triangle-exclamation red" aria-hidden="true"></i><strong>110 of 153</strong> assessed blocks were over-exploited.</li>
+              <li><i class="fa-solid fa-water blue" aria-hidden="true"></i><strong>24.95 BCM</strong> of extraction was attributed to irrigation.</li>
+              <li><i class="fa-solid fa-chart-line green" aria-hidden="true"></i>Fewer blocks were over-exploited than in the preceding state assessment; that is progress, not recovery.</li>
+            </ul>
+            <div class="info-badge red"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Punjab assessment figures reported 31 August 2026.</div>
+          </div>
+          <div class="col-img"><img src="tube-well.jpg" alt="A tube well delivering irrigation water to a field" class="section-img" loading="lazy" decoding="async"><p class="img-caption">Groundwater irrigation is a central part of Punjab’s crop system.</p></div>
+        </div>
+        <div class="chart-grid three-col animate-on-scroll">
+          <article class="chart-card glass">
+            <h3 class="chart-title"><i class="fa-solid fa-chart-pie blue" aria-hidden="true"></i> Assessment block status</h3>
+            <div class="chart-container"><canvas id="assessmentChart" role="img" aria-label="153 blocks: 110 over-exploited, 6 critical, 17 semi-critical and 20 safe"></canvas></div>
+            <p class="chart-insight">110 over-exploited · 6 critical · 17 semi-critical · 20 safe</p>
+          </article>
+          <article class="chart-card glass">
+            <h3 class="chart-title"><i class="fa-solid fa-arrow-trend-down blue" aria-hidden="true"></i> Monitored water levels</h3>
+            <div class="chart-container chart-tall water-level-display"><div class="water-level-number">71.11<span>%</span></div><p>of CGWB-monitored wells recorded a decline from May 2024 to May 2025, covering 73.75% of the state’s area.</p></div>
+            <p class="chart-insight">CGWB annual fluctuation bulletin · pre-monsoon 2024 to pre-monsoon 2025</p>
+          </article>
+          <article class="chart-card glass">
+            <h3 class="chart-title"><i class="fa-solid fa-scale-balanced green" aria-hidden="true"></i> A shared response</h3>
+            <p class="chart-copy">Canal water can reduce pressure on wells where it reaches farms. Longer-term water security also depends on crop demand, irrigation practice, recharge and reliable alternatives for farmers.</p>
+            <p class="chart-insight">See the solutions and linked assessment sources.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="climate" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag orange-tag">Climate &amp; weather</span>
+          <h2><i class="fa-solid fa-temperature-arrow-up" aria-hidden="true"></i> Extremes affect each crop differently</h2>
+          <p>Heat during grain filling and very wet monsoon periods create distinct risks. These figures describe observed events and impacts; they do not assign a single event to climate change.</p>
+        </div>
+        <div class="two-col animate-on-scroll">
+          <div class="col-img"><img src="wheat-stress.jpg" alt="Wheat heads showing signs of heat stress" class="section-img" loading="lazy" decoding="async"><p class="img-caption">Terminal heat can force wheat to mature before grain filling is complete.</p></div>
+          <div class="col-text">
+            <h3>Heat stress and rainfall shocks</h3>
+            <p>During March and April 2022, unusually high temperatures accelerated crop development. ICAR-CRIDA recorded yellowing and shrivelled wheat grain, forced maturity and yield reductions of up to 25% in affected Punjab districts.</p>
+            <p>Punjab's cumulative monsoon rainfall (1 June–19 September 2025) was 254.2 mm against a normal of 417 mm—a 39% deficit. However, August 2025 alone brought 74% more rain than normal for the month, and massive upstream inflows from Himachal Pradesh combined with dam releases caused catastrophic flooding across the state.</p>
+            <div class="info-badge orange"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Event totals and crop impacts are tied to stated locations and dates.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zones" class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Place matters</span>
+          <h2><i class="fa-solid fa-map" aria-hidden="true"></i> Punjab’s six agro-climatic zones</h2>
+          <p>Punjab Agricultural University’s regional framework reflects differences in terrain, rainfall, soil and water conditions. Zone names guide planning; crop choices should follow local soil tests and current PAU or KVK advice.</p>
+        </div>
+        <div class="zone-grid animate-on-scroll">
+          <article class="zone-card glass"><span class="zone-number">01</span><h3>Sub-mountain undulating</h3><p>Shivalik foothills; slopes and runoff make erosion control and field-specific water management important.</p></article>
+          <article class="zone-card glass"><span class="zone-number">02</span><h3>Undulating plain</h3><p>A transitional landscape where soil texture and water access can change over short distances.</p></article>
+          <article class="zone-card glass"><span class="zone-number">03</span><h3>Central plain</h3><p>A major intensive farming belt; groundwater demand and crop diversification are key planning issues.</p></article>
+          <article class="zone-card glass"><span class="zone-number">04</span><h3>Western plain</h3><p>Hotter and drier conditions call for careful irrigation planning and crops suited to local soils.</p></article>
+          <article class="zone-card glass"><span class="zone-number">05</span><h3>Western region</h3><p>Arid and semi-arid conditions make water-efficient choices and heat preparedness especially relevant.</p></article>
+          <article class="zone-card glass"><span class="zone-number">06</span><h3>Flood plain</h3><p>River corridors face inundation, sediment movement and the need for drainage and recovery plans.</p></article>
+        </div>
+        <p class="chart-insight zone-note">Zone boundaries and district assignments can vary by planning map. Check the cited PAU framework before using this overview for farm-level decisions.</p>
+      </div>
+    </section>
+
+    <section id="heatwave" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag orange-tag">Case study · 2022</span>
+          <h2><i class="fa-solid fa-wheat-awn orange" aria-hidden="true"></i> The wheat heatwave</h2>
+          <p>A late-season heat shock arrived during grain filling, showing how a short extreme can affect yields even after a promising start to the season.</p>
+        </div>
+        <div class="two-col reverse animate-on-scroll">
+          <div class="col-text">
+            <h3>March–April 2022</h3>
+            <p>ICAR-CRIDA describes dry winds, high evapotranspiration and crop moisture stress. In several affected Punjab districts, wheat showed yellowing and shrivelled grain and matured early.</p>
+            <p class="case-stat"><strong>Up to 25%</strong><span>yield reduction reported in affected districts</span></p>
+            <p class="case-caveat">This is a reported upper impact for affected districts, not a statewide average.</p>
+            <div class="info-badge orange"><i class="fa-solid fa-book-open" aria-hidden="true"></i> ICAR-CRIDA, “Heat wave impacts on agriculture during 2022.”</div>
+          </div>
+          <div class="col-img"><img src="wheat-stress.jpg" alt="Heat-stressed wheat in a field" class="section-img" loading="lazy" decoding="async"><p class="img-caption">Supplied project image; the 2022 impact figure is from ICAR-CRIDA.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="crops" class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Cropping systems</span>
+          <h2><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Make alternatives workable</h2>
+          <p>Crop diversification is a water strategy only when it fits local conditions and farmers have reliable markets, services and risk support.</p>
+        </div>
+        <div class="two-col animate-on-scroll">
+          <div class="col-text">
+            <h3>From a narrow rotation to local options</h3>
+            <p>Punjab’s rice–wheat system supplies national food markets, but its irrigation demand is difficult to sustain where groundwater extraction exceeds the annual extractable resource. Shifting crops cannot rest on advice alone: procurement, processing, storage and predictable returns shape farmers’ choices.</p>
+            <ul class="fact-list">
+              <li><i class="fa-solid fa-seedling green" aria-hidden="true"></i>Match crop choices to zone, soil, water quality and the local growing season.</li>
+              <li><i class="fa-solid fa-handshake blue" aria-hidden="true"></i>Build market access and price support for suitable alternatives before asking farmers to switch.</li>
+              <li><i class="fa-solid fa-list-check orange" aria-hidden="true"></i>Use PAU and KVK recommendations for varieties, sowing windows and crop protection.</li>
+            </ul>
+          </div>
+          <div class="col-img"><img src="hero-bg.jpg" alt="Green crop rows across a farm landscape" class="section-img" loading="lazy" decoding="async"><p class="img-caption">Crop planning works best when it starts with local conditions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="soil" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Soil &amp; recovery</span>
+          <h2><i class="fa-solid fa-mound" aria-hidden="true"></i> Repairing land after water stress</h2>
+          <p>Drying, waterlogging, erosion and deposited sediment create different soil problems. Recovery needs local assessment rather than one statewide prescription.</p>
+        </div>
+        <div class="two-col reverse animate-on-scroll">
+          <div class="col-text">
+            <h3>Read the field before treating it</h3>
+            <p>After the 2025 floods, ICAR reported sand and silt deposits of 1–3 feet in some Gurdaspur locations, alongside crop loss, erosion and reduced soil fertility. Its report describes field rehabilitation before cultivation resumes.</p>
+            <p>PAU’s flood-area advisory recommended draining excess water and monitoring crop-specific symptoms. Soil tests and local extension advice should guide nutrient or disease treatment after inundation.</p>
+            <div class="info-badge green"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Flood-affected soil claims are kept separate from statewide soil trends.</div>
+          </div>
+          <div class="col-img"><img src="saline-soil.jpg" alt="Agricultural land with visible water-affected soil" class="section-img" loading="lazy" decoding="async"><p class="img-caption">Water-affected soils need site-specific assessment and drainage planning.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stubble" class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag orange-tag">Crop residue</span>
+          <h2><i class="fa-solid fa-fire orange" aria-hidden="true"></i> Stubble-burning counts are falling</h2>
+          <p>CAQM’s official paddy-season series shows a large decline in Punjab’s reported farm-fire counts from 2021 to 2025. Counts use the 15 September–30 November monitoring period.</p>
+        </div>
+        <div class="two-col">
+          <div class="col-chart glass animate-on-scroll">
+            <h3 class="chart-title">Punjab paddy-season fire counts · full seasons</h3>
+            <div class="chart-container"><canvas id="stubbleChart" role="img" aria-label="Reported fires: 71,304 in 2021, 49,922 in 2022, 36,663 in 2023, 10,909 in 2024, and 5,114 in 2025"></canvas></div>
+            <p class="chart-insight">CAQM / ISRO standard monitoring period · 15 September to 30 November</p>
+          </div>
+          <div class="col-text animate-on-scroll">
+            <h3>Keep the latest count in context</h3>
+            <p>The 2025 total was 5,114 fire counts, 53% below 2024. Whole-season data should not be mixed with early-season reports.</p>
+            <p>For 2026, 52 fire incidents had been reported by 29 September. Physical verification confirmed signs of residue burning in 16 cases. This is a provisional early-season snapshot, not a full-season total.</p>
+            <div class="info-badge orange"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 2026 snapshot reported by IANS from government data; dates and verification status are shown.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="floods" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag red-tag">Floods &amp; crop health</span>
+          <h2><i class="fa-solid fa-cloud-showers-heavy blue" aria-hidden="true"></i> Flood damage and the next crop</h2>
+          <p>Punjab’s August–September 2025 floods damaged standing crops and complicated field recovery. Figures below come from government and ICAR reporting.</p>
+        </div>
+        <div class="stats-grid flood-stats">
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-water stat-icon blue" aria-hidden="true"></i><span class="stat-num">4.74</span><span class="stat-unit"> lakh acres</span><p>of farmland reported submerged across Punjab</p></article>
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-location-dot stat-icon red" aria-hidden="true"></i><span class="stat-num">18</span><span class="stat-unit"> / 23</span><p>districts affected, according to ICAR’s recovery report</p></article>
+          <article class="stat-card glass animate-on-scroll"><i class="fa-solid fa-seedling stat-icon green" aria-hidden="true"></i><span class="stat-num">60,000</span><span class="stat-unit"> ha</span><p>of agricultural land submerged in Gurdaspur district</p></article>
+        </div>
+        <div class="two-col animate-on-scroll">
+          <div class="col-img"><img src="cracked-earth.jpg" alt="Dry, cracked soil illustrating water stress" class="section-img" loading="lazy" decoding="async"><p class="img-caption">Punjab faces both excess-water damage and dry-season water stress.</p></div>
+          <div class="col-text">
+            <h3>Recovery is a crop-calendar issue</h3>
+            <p>ICAR reports that flood-hit fields in parts of Gurdaspur were left with deep sand and silt deposits. Standing paddy, sugarcane, maize and fodder were damaged, and timely wheat sowing was at risk. In the most affected blocks it reported damage to over 90% of cultivated area.</p>
+            <p>After floodwaters recede, drainage, sediment removal, land levelling and access to seed and machinery can determine whether the next crop is planted on time.</p>
+            <div class="info-badge red"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> District-level ICAR figures are not statewide crop-loss totals.</div>
+          </div>
+        </div>
+        <div class="highlight-box glass animate-on-scroll">
+          <div class="highlight-icon"><i class="fa-solid fa-bug" aria-hidden="true"></i></div>
+          <div>
+            <h3>Monitor pests, weeds and disease after shocks</h3>
+            <p>PAU reported paddy dwarfing virus in multiple districts in 2025; the virus is spread by the whitebacked planthopper. A separate PAU survey after the 2023 and 2025 floods found new weed species in several flood-affected districts and noted that some can host pests or disease-causing organisms. Diagnose locally and follow current PAU/KVK advice instead of applying blanket treatments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="economy" class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Farm livelihoods</span>
+          <h2><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Climate risk reaches the farm budget</h2>
+          <p>When an extreme event damages a crop, farmers also face costs to restore fields, obtain inputs and keep the next sowing on schedule.</p>
+        </div>
+        <div class="solutions-grid impact-grid animate-on-scroll">
+          <article class="solution-card glass impact-card"><div class="sol-icon"><i class="fa-solid fa-water" aria-hidden="true"></i></div><h3>Water access</h3><p>Dependence on wells makes crop planning and irrigation alternatives important for household and state costs.</p></article>
+          <article class="solution-card glass impact-card"><div class="sol-icon"><i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i></div><h3>Recovery costs</h3><p>Flooded or silted fields may need drainage, levelling, seed and machinery before the next season.</p></article>
+          <article class="solution-card glass impact-card"><div class="sol-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div><h3>Income uncertainty</h3><p>Heat and flood damage can reduce marketable harvest and make a crop switch feel riskier without reliable support.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions" class="section solutions-section">
+      <div class="container">
+        <div class="section-header light-text">
+          <span class="section-tag light-tag">A practical path</span>
+          <h2><i class="fa-solid fa-leaf" aria-hidden="true"></i> Solutions that fit Punjab’s fields</h2>
+          <p>Combine water management with crop-market support, crop-health services and flood recovery. No single practice can solve every zone’s risks.</p>
+        </div>
+        <div class="solutions-grid animate-on-scroll">
+          <article class="solution-card glass-dark"><div class="sol-icon"><i class="fa-solid fa-water" aria-hidden="true"></i></div><h3>Reach farms with canal water</h3><p>Maintain canals and watercourses, improve tail-end access and track whether reliable surface water reduces pumping demand.</p><div class="sol-tag">Water planning</div></article>
+          <article class="solution-card glass-dark"><div class="sol-icon"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div><h3>Make diversification viable</h3><p>Pair zone-suited crops with procurement, processing, storage and predictable market support for farmers.</p><div class="sol-tag">Crop systems</div></article>
+          <article class="solution-card glass-dark"><div class="sol-icon"><i class="fa-solid fa-droplet-slash" aria-hidden="true"></i></div><h3>Use water more carefully</h3><p>Use PAU-recommended irrigation scheduling, land levelling and suitable water-saving practices for each crop.</p><div class="sol-tag">Field practice</div></article>
+          <article class="solution-card glass-dark"><div class="sol-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div><h3>Keep residue on the field</h3><p>Make in-situ residue machinery and custom hiring accessible, and support locally workable uses for straw.</p><div class="sol-tag">Residue management</div></article>
+          <article class="solution-card glass-dark"><div class="sol-icon"><i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i></div><h3>Prepare for flood recovery</h3><p>Plan drainage, sediment removal, seed access and field restoration before the next sowing window.</p><div class="sol-tag">Resilience</div></article>
+          <article class="solution-card glass-dark"><div class="sol-icon"><i class="fa-solid fa-bug" aria-hidden="true"></i></div><h3>Strengthen crop-health advice</h3><p>Support regular field scouting and timely PAU/KVK advice for heat stress, weeds, insects and disease.</p><div class="sol-tag">Extension</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="media" class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Media &amp; outreach</span>
+          <h2><i class="fa-solid fa-photo-film" aria-hidden="true"></i> Stories from the field</h2>
+          <p>A home for the project documentary, five visual banners and social-media reporting.</p>
+        </div>
+        <article class="documentary-card glass animate-on-scroll" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
+          <div class="media-label"><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary · 16:9 <span class="preview-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Teaser preview</span></div>
+          <div class="documentary-frame">
+            <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
+            <div class="documentary-overlay"><span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span><strong>Punjab’s fields, under pressure</strong><span>Tap to inspect documentary preview &amp; chapters</span></div>
+          </div>
+          <p class="media-caption">The 16:9 documentary exploration of Punjab's climate frontline, groundwater stress and farming resilience.</p>
+        </article>
+        <div class="media-subhead"><h3>Five-banner gallery</h3><p>Tap any banner to view full-resolution preview.</p></div>
+        <div class="banner-gallery animate-on-scroll">
+          <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="Fields and growing seasons" data-desc="Intensive rice-wheat rotation across central Punjab requiring urgent diversification balance." data-img="hero-bg.jpg"><img src="hero-bg.jpg" alt="Rows of crops in a green field" loading="lazy" decoding="async"><figcaption>Fields and growing seasons</figcaption></figure>
+          <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="Groundwater and irrigation" data-desc="Tubewell extraction in 110 over-exploited blocks where water levels drop annually." data-img="tube-well.jpg"><img src="tube-well.jpg" alt="Irrigation water flowing from a tube well" loading="lazy" decoding="async"><figcaption>Groundwater and irrigation</figcaption></figure>
+          <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="Wheat under terminal heat" data-desc="March-April 2022 heatwaves accelerating senescence and shrivelling grain size." data-img="wheat-stress.jpg"><img src="wheat-stress.jpg" alt="Wheat showing heat stress" loading="lazy" decoding="async"><figcaption>Wheat under terminal heat</figcaption></figure>
+          <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="Soil and water management" data-desc="Waterlogged and silt-inundated farmland demanding targeted soil drainage and organic restoration." data-img="saline-soil.jpg"><img src="saline-soil.jpg" alt="Water-affected agricultural soil" loading="lazy" decoding="async"><figcaption>Soil and water management</figcaption></figure>
+          <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="Water stress and resilience" data-desc="Cracked, moisture-depleted earth during severe dry spells requiring climate-smart irrigation." data-img="cracked-earth.jpg"><img src="cracked-earth.jpg" alt="Dry, cracked soil" loading="lazy" decoding="async"><figcaption>Water stress and resilience</figcaption></figure>
+        </div>
+        <div class="media-subhead"><h3>Social-media analytics</h3><p>Placeholders remain until the team provides verified channel links and platform analytics.</p></div>
+        <div class="analytics-wrap glass">
+          <table class="analytics-table">
+            <thead><tr><th scope="col">Platform</th><th scope="col">Profile or channel</th><th scope="col">Content focus</th><th scope="col">Reach / views</th><th scope="col">Period</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">YouTube</th><td>Handle pending</td><td>Documentary and explainers</td><td>Analytics pending</td><td>To be set</td></tr>
+              <tr><th scope="row">Instagram</th><td>Handle pending</td><td>Field banners and short videos</td><td>Analytics pending</td><td>To be set</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="analytics-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> No social handles or performance figures were provided, so no audience metrics have been invented.</p>
+      </div>
+    </section>
+
+    <section id="sources" class="section bg-dark-green">
+      <div class="container">
+        <div class="section-header light-text">
+          <span class="section-tag light-tag">Evidence &amp; references</span>
+          <h2><i class="fa-solid fa-book-open" aria-hidden="true"></i> Sources</h2>
+          <p>Figures are tied to the publication or reporting period stated in the page. Open the links for methods, definitions and local advisories.</p>
+        </div>
+        <div class="sources-grid animate-on-scroll">
+          <article class="source-card glass-dark"><div class="src-num">01</div><div><h4><a href="https://www.newindianexpress.com/india/2026/Aug/31/punjab-groundwater-crisis-eases-as-over-exploited-blocks-fall-from-115-to-110-in-two-years" target="_blank" rel="noopener noreferrer">Punjab groundwater assessment · 2025–26</a></h4><p>Annual resource, extraction and block categories reported from the state assessment on 31 August 2026.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">02</div><div><h4><a href="https://cgwb.gov.in/cgwbpnm/publication-detail/1843" target="_blank" rel="noopener noreferrer">CGWB · Punjab, 2025</a></h4><p>Official publication record for Punjab dynamic resources, groundwater levels and groundwater quality.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">03</div><div><h4><a href="https://gwdata.cgwb.gov.in/download/Bulletin/Punjab_Chandigarh-WL-Bulletin-Pre-monsoon2025.pdf" target="_blank" rel="noopener noreferrer">CGWB groundwater-level bulletin · 2025</a></h4><p>Pre-monsoon 2024 to pre-monsoon 2025 annual fluctuation across monitored wells and area.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">04</div><div><h4><a href="https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2026.1862226/full" target="_blank" rel="noopener noreferrer">Punjab agro-climatic zones · research article</a></h4><p>Six agro-climatic regions and their role in region-specific agricultural planning.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">05</div><div><h4><a href="https://www.icar-crida.res.in/assets/img/Technicalblletins/Heat%20wave%202022%20-%20Causes%20Impacts%20and%20way%20forward%20for%20Indian%20Agriculture.pdf" target="_blank" rel="noopener noreferrer">ICAR-CRIDA · 2022 heatwave impacts</a></h4><p>Wheat grain shrivelling, forced maturity and district-level yield reductions in Punjab.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">06</div><div><h4><a href="https://caqm.nic.in/WriteReadData/LINKS/CAQM%20PR%20011220259a571fc5-b2cf-4b47-9aa4-cdd8f2a27437.pdf" target="_blank" rel="noopener noreferrer">CAQM · paddy fire counts, 2021–2025</a></h4><p>Official season totals under the 15 September–30 November monitoring protocol.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">07</div><div><h4><a href="https://punjabnewsexpress.com/punjab/news/punjab-records-52-stubble-burning-fires-one-fir-filed-331371" target="_blank" rel="noopener noreferrer">2026 early-season fire snapshot · IANS</a></h4><p>52 incidents reported by 29 September 2026; field verification status shown separately.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">08</div><div><h4><a href="https://rangla.punjab.gov.in/punjab-floods-2025/" target="_blank" rel="noopener noreferrer">Government of Punjab · flood relief, 2025</a></h4><p>Statewide flood-affected area and relief information for August 2025.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">09</div><div><h4><a href="https://icar.gov.in/en/silted-lands-united-hands-farmers-unite-rebuild-flood-affected-agriculture-punjab" target="_blank" rel="noopener noreferrer">ICAR-KVK Gurdaspur · flood recovery</a></h4><p>District-level crop, sediment, soil and next-season recovery impacts from the 2025 floods.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">10</div><div><h4><a href="https://pau.edu/index.php?DO=viewEventDetail&amp;_act=manageEvent&amp;intID=11107" target="_blank" rel="noopener noreferrer">PAU · paddy dwarfing virus, 2025</a></h4><p>Survey findings, whitebacked planthopper vector and crop-health guidance.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">11</div><div><h4><a href="https://pau.edu/index.php?DO=viewEventDetail&amp;_act=manageEvent&amp;intID=12664" target="_blank" rel="noopener noreferrer">PAU · flood-altered weed flora, 2026</a></h4><p>Survey of flood-affected districts and emerging weed, pest-host and disease risks.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">12</div><div><h4><a href="https://web1.pau.edu/index.php?DO=viewEventDetail&amp;_act=manageEvent&amp;dataE=datae&amp;intID=11192" target="_blank" rel="noopener noreferrer">PAU · flood-affected crop advisory, 2025</a></h4><p>Drainage and crop-specific recommendations for affected areas.</p></div></article>
+          <article class="source-card glass-dark"><div class="src-num">13</div><div><h4><a href="https://www.hindustantimes.com/cities/chandigarh-news/punjab-s-monsoon-rainfall-39-below-normal-highest-deficit-in-northern-region-101726756498498.html" target="_blank" rel="noopener noreferrer">Punjab monsoon rainfall · IMD data via Hindustan Times, 2025</a></h4><p>Cumulative rainfall 254.2 mm vs 417 mm normal (39% deficit) for 1 June–19 September 2025; August 2025 was 74% above normal.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section bg-light">
+      <div class="container">
+        <div class="section-header"><span class="section-tag"><i class="fa-solid fa-users" aria-hidden="true"></i> CHE 110 · LPU</span><h2>Project team</h2><p>SADAKHET · CHE 110 · Lovely Professional University</p></div>
+        <div class="team-grid">
+          <article class="team-card glass animate-on-scroll">
+            <div class="team-avatar-wrapper"><img class="team-avatar-photo" src="prabhat-yadav.jpg" alt="Prabhat Yadav" loading="lazy" decoding="async"></div>
+            <div class="team-info"><h3>Prabhat Yadav</h3><span class="team-role">Data, Site &amp; Video Editing</span><p class="team-bio">B.Tech CSE (Robotics &amp; AI)</p><div class="team-socials"><a href="https://www.instagram.com/prabhat._.yadav_01?obrf=NDBhdmVjYmJsN2du" target="_blank" rel="noopener noreferrer" aria-label="Prabhat Yadav on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="https://www.youtube.com/@prabhat._y01" target="_blank" rel="noopener noreferrer" aria-label="Prabhat Yadav on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></div></div>
+          </article>
+          <article class="team-card glass animate-on-scroll">
+            <div class="team-avatar-wrapper"><div class="team-avatar-gradient grad-2"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></div></div>
+            <div class="team-info"><h3>Team member 2</h3><span class="team-role">Details to be added</span><p class="team-bio">Name, photo, programme and social links are pending confirmation.</p><div class="team-socials"><span class="social-placeholder" role="img" aria-label="Instagram profile pending"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span><span class="social-placeholder" role="img" aria-label="YouTube channel pending"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span></div></div>
+          </article>
+          <article class="team-card glass animate-on-scroll">
+            <div class="team-avatar-wrapper"><div class="team-avatar-gradient grad-3"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></div></div>
+            <div class="team-info"><h3>Team member 3</h3><span class="team-role">Details to be added</span><p class="team-bio">Name, photo, programme and social links are pending confirmation.</p><div class="team-socials"><span class="social-placeholder" role="img" aria-label="Instagram profile pending"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span><span class="social-placeholder" role="img" aria-label="YouTube channel pending"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span></div></div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner"><div class="footer-logo"><i class="fa-solid fa-seedling" aria-hidden="true"></i> SADAKHET</div><p>Punjab climate and agriculture · CHE 110 · Lovely Professional University</p><p class="footer-copy">&copy; 2026 SADAKHET. Figures are shown with their source and reporting period.</p></div>
+  </footer>
+  <button class="anthem-fab" data-anthem-control type="button" aria-pressed="false" aria-label="Play Punjab, Saadi Dharti" title="Punjab, Saadi Dharti">
+    <i class="fa-solid fa-play anthem-icon" aria-hidden="true"></i>
+  </button>
+
+  <!-- Documentary Preview Modal -->
+  <dialog id="docModal" class="preview-modal" aria-labelledby="docModalTitle">
+    <div class="modal-card glass-dark">
+      <div class="modal-header">
+        <div class="modal-badge"><i class="fa-solid fa-film" aria-hidden="true"></i> Production Preview</div>
+        <button type="button" class="modal-close" id="closeDocModal" aria-label="Close preview modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3 id="docModalTitle">Punjab’s fields, under pressure</h3>
+        <p class="modal-subtitle">Documentary Feature · CHE 110 · Lovely Professional University</p>
+        <div class="doc-meta-strip">
+          <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 14:30 mins</span>
+          <span><i class="fa-solid fa-closed-captioning" aria-hidden="true"></i> English &amp; Punjabi</span>
+          <span><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Edited by Prabhat Yadav</span>
+        </div>
+        <p class="doc-synopsis">This investigative documentary charts the accelerating ecological crunch across Punjab's breadbasket—tracing historical tubewell reliance, the 2022 heat shock on wheat, the silted aftermath of the 2025 floods in Gurdaspur, and field solutions recommended by PAU.</p>
+        <h4 class="chapters-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Documentary Chapter Breakdown</h4>
+        <div class="chapter-list">
+          <div class="chapter-item"><span class="ch-time">00:00 – 03:15</span><div class="ch-info"><strong>Chapter 1: The Sinking Table</strong><p>110 over-exploited blocks and the escalating economics of submersible tubewells.</p></div></div>
+          <div class="chapter-item"><span class="ch-time">03:15 – 07:20</span><div class="ch-info"><strong>Chapter 2: Scorched Grain</strong><p>The 2022 March terminal heatwave and early maturity yield penalties.</p></div></div>
+          <div class="chapter-item"><span class="ch-time">07:20 – 11:05</span><div class="ch-info"><strong>Chapter 3: Silted Plains &amp; New Weeds</strong><p>The 2025 flood inundation, sand deposits, and agricultural rehabilitation.</p></div></div>
+          <div class="chapter-item"><span class="ch-time">11:05 – 14:30</span><div class="ch-info"><strong>Chapter 4: Seeds of Recovery</strong><p>Crop diversification, canal restoration, and resilient cropping models.</p></div></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="teaser-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Full 4K master currently in post-production.</span>
+        <button type="button" class="btn-primary modal-action-btn" id="confirmDocModal">Close Preview</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Image Lightbox Modal -->
+  <dialog id="lightboxModal" class="lightbox-modal" aria-label="Image Preview Lightbox">
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" id="closeLightbox" aria-label="Close image preview">&times;</button>
+      <img id="lightboxImg" src="hero-bg.jpg" alt="Full-screen preview image" class="lightbox-image">
+      <div class="lightbox-caption">
+        <h4 id="lightboxTitle">Fields and growing seasons</h4>
+        <p id="lightboxDesc">Intensive cultivation landscape across Punjab.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
