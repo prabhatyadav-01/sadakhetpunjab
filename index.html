@@ -348,30 +348,64 @@
         </div>
         <div class="video-showcase-grid">
           <!-- 16:9 Project Documentary Feature -->
-          <article class="documentary-card glass animate-on-scroll" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
-            <div class="media-label"><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary · 16:9 <span class="preview-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Teaser preview</span></div>
-            <div class="documentary-frame">
-              <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
-              <div class="documentary-overlay"><span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span><strong>Punjab’s fields, under pressure</strong><span>Tap to inspect documentary preview &amp; chapters</span></div>
+          <article class="media-feature-card glass animate-on-scroll">
+            <div class="media-label">
+              <span><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary · 16:9</span>
+              <span class="preview-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Teaser preview</span>
             </div>
-            <p class="media-caption">The 16:9 documentary exploration of Punjab's climate frontline, groundwater stress and farming resilience.</p>
+            <div class="documentary-frame" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
+              <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
+              <div class="documentary-overlay">
+                <span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
+                <strong>Punjab’s fields, under pressure</strong>
+                <span>Tap to inspect documentary preview &amp; chapters</span>
+              </div>
+            </div>
+            <div class="doc-card-body">
+              <div class="doc-card-header">
+                <h3>Punjab’s fields, under pressure</h3>
+                <span class="doc-duration-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> 14:30 mins</span>
+              </div>
+              <p class="doc-card-desc">An investigative exploration tracking tubewell stress across 110 over-exploited blocks, terminal heat shocks during wheat grain filling, and field silt rehabilitation following the 2025 floods.</p>
+              <div class="doc-chapters-preview">
+                <div class="doc-chapter-pill"><span class="ch-badge">01</span> The Sinking Table</div>
+                <div class="doc-chapter-pill"><span class="ch-badge">02</span> Scorched Grain</div>
+                <div class="doc-chapter-pill"><span class="ch-badge">03</span> Silted Plains &amp; Weeds</div>
+                <div class="doc-chapter-pill"><span class="ch-badge">04</span> Seeds of Recovery</div>
+              </div>
+              <button type="button" class="btn-primary doc-modal-btn" id="docPreviewCardBtn">
+                <i class="fa-solid fa-play" aria-hidden="true"></i> Watch Documentary Teaser &amp; Chapters
+              </button>
+            </div>
           </article>
 
-          <!-- 9:16 Instagram Reel / Short Video -->
-          <article class="reel-card glass animate-on-scroll">
-            <div class="media-label"><i class="fa-brands fa-instagram" style="color:#e1306c;" aria-hidden="true"></i> Field Reel · 9:16 <a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" class="preview-pill instagram-pill" aria-label="View Reel on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Open in Instagram</a></div>
-            <div class="reel-frame-container">
-              <iframe 
-                class="instagram-reel-iframe"
-                src="https://www.instagram.com/reel/DeWF00JKp46/embed" 
-                title="SADAKHET Punjab Agriculture Instagram Reel (9:16)"
-                scrolling="no" 
-                allowtransparency="true" 
-                allow="encrypted-media"
-                loading="lazy">
-              </iframe>
+          <!-- 9:16 Instagram Reel / Mobile Field Video -->
+          <article class="reel-feature-card glass animate-on-scroll">
+            <div class="media-label">
+              <span><i class="fa-brands fa-instagram" style="color:#e1306c;" aria-hidden="true"></i> Field Reel · 9:16</span>
+              <a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" class="preview-pill instagram-pill" aria-label="View Reel on Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Open in Instagram
+              </a>
             </div>
-            <p class="media-caption">Ground-level field video &amp; agricultural overview in 9:16 mobile format. Tap to play or watch on Instagram.</p>
+            <div class="phone-mockup">
+              <div class="phone-speaker" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <iframe 
+                  class="instagram-reel-iframe"
+                  src="https://www.instagram.com/reel/DeWF00JKp46/embed" 
+                  title="SADAKHET Punjab Agriculture Instagram Reel (9:16)"
+                  scrolling="no" 
+                  allowtransparency="true" 
+                  allow="encrypted-media"
+                  loading="lazy">
+                </iframe>
+              </div>
+            </div>
+            <div class="reel-card-footer">
+              <a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" class="btn-secondary reel-ig-btn">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Watch &amp; Like on Instagram
+              </a>
+            </div>
           </article>
         </div>
 

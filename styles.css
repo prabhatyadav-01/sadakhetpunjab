@@ -1341,7 +1341,10 @@ img, picture, video, canvas, svg {
     .modal-card { padding: 20px 14px; border-radius: 18px; }
     .chapter-item { flex-direction: column; gap: 4px; }
 
-    .reel-frame-container { max-width: 320px; height: 550px; }
+    .media-feature-card, .reel-feature-card { padding: 18px 14px; }
+    .doc-chapters-preview { grid-template-columns: 1fr; }
+    .phone-mockup { max-width: 100%; border-radius: 28px; padding: 10px; }
+    .phone-screen { height: 700px; border-radius: 20px; }
     .anthem-fab { right: 14px; bottom: 16px; width: 46px; height: 46px; }
 }
 
@@ -1388,33 +1391,201 @@ img, picture, video, canvas, svg {
 .impact-card p { color: #555; }
 .impact-card .sol-icon { color: var(--clr-water-deep); }
 
-/* Video Showcase Grid (16:9 Documentary + 9:16 Vertical Reel) */
+/* Video Showcase Grid (Balanced 16:9 Documentary + 9:16 Vertical Reel) */
 .video-showcase-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
     gap: 32px;
-    align-items: start;
-    margin-bottom: 44px;
+    align-items: stretch;
+    margin-bottom: 48px;
 }
 
-.documentary-card {
-    max-width: 100%;
-    margin: 0;
-    height: 100%;
+.media-feature-card, .reel-feature-card {
     display: flex;
     flex-direction: column;
+    padding: 24px;
+    border-radius: 24px;
+    height: 100%;
 }
 
-.reel-card {
-    max-width: 100%;
-    margin: 0;
+.media-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--clr-agri-dark);
+}
+
+.media-label span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 16:9 Documentary Card */
+.documentary-frame {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    background: var(--clr-agri-dark);
+    isolation: isolate;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.documentary-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.documentary-frame > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.48);
+    transition: transform 0.5s ease;
+}
+
+.documentary-frame:hover > img {
+    transform: scale(1.04);
+}
+
+.documentary-overlay {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    color: white;
+    text-align: center;
 }
 
-.reel-card .media-label {
+.documentary-overlay strong {
+    font: 700 clamp(1.2rem, 2.5vw, 1.8rem) var(--font-display);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.documentary-overlay > span:last-child {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.85rem;
+}
+
+.documentary-play {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    color: white;
+    background: rgba(42, 157, 143, 0.45);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.documentary-frame:hover .documentary-play {
+    transform: scale(1.12);
+    background: rgba(42, 157, 143, 0.75);
+}
+
+.doc-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 18px;
+}
+
+.doc-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.doc-card-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--clr-agri-dark);
+}
+
+.doc-duration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--clr-water-deep);
+    background: rgba(0, 119, 182, 0.1);
+    border: 1px solid rgba(0, 119, 182, 0.25);
+    white-space: nowrap;
+}
+
+.doc-card-desc {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.doc-chapters-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.doc-chapter-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(26, 58, 38, 0.1);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.ch-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: var(--clr-agri-green);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.doc-modal-btn {
     width: 100%;
+    justify-content: center;
+    margin-top: auto;
+    padding: 14px 20px;
+    font-size: 0.94rem;
+}
+
+/* 9:16 Instagram Smartphone Mockup Shell */
+.reel-feature-card {
+    align-items: center;
 }
 
 .instagram-pill {
@@ -1432,18 +1603,38 @@ img, picture, video, canvas, svg {
     box-shadow: 0 4px 14px rgba(225, 48, 108, 0.3);
 }
 
-.reel-frame-container {
+.phone-mockup {
     position: relative;
     width: 100%;
-    max-width: 360px;
-    height: 600px;
-    aspect-ratio: 9 / 16;
-    border-radius: 20px;
-    overflow: hidden;
+    max-width: 370px;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #18221b, #0d1611);
+    padding: 12px;
+    box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.35),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    margin: 4px auto 16px;
+    box-sizing: border-box;
+}
+
+.phone-speaker {
+    width: 72px;
+    height: 12px;
     background: #000;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.38);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin: 10px auto 14px;
+    border-radius: 20px;
+    margin: 4px auto 10px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+.phone-screen {
+    position: relative;
+    width: 100%;
+    height: 720px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
 }
 
 .instagram-reel-iframe {
@@ -1451,50 +1642,29 @@ img, picture, video, canvas, svg {
     height: 100%;
     border: none;
     display: block;
-    background: #000;
+    background: #fff;
 }
 
-.documentary-frame {
-    position: relative;
-    overflow: hidden;
+.reel-card-footer {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 12px;
-    background: var(--clr-agri-dark);
-    isolation: isolate;
+    max-width: 370px;
+    margin-top: auto;
 }
-.documentary-frame > img {
-    position: absolute;
-    inset: 0;
+
+.reel-ig-btn {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.48);
-    z-index: -1;
-}
-.documentary-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    color: white;
-    text-align: center;
+    padding: 13px 20px;
+    font-size: 0.92rem;
+    border-color: rgba(225, 48, 108, 0.4);
+    color: #e1306c;
+    background: rgba(225, 48, 108, 0.08);
 }
-.documentary-overlay strong { font: 700 clamp(1.25rem, 3vw, 2rem) var(--font-display); }
-.documentary-overlay > span:last-child { color: rgba(255,255,255,0.78); font-size: 0.9rem; }
-.documentary-play {
-    display: grid;
-    place-items: center;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    color: white;
-    background: rgba(144,224,239,0.28);
-    border: 1px solid rgba(255,255,255,0.55);
+
+.reel-ig-btn:hover {
+    background: linear-gradient(135deg, #e1306c, #fd1d1d);
+    color: #fff;
+    border-color: transparent;
 }
 
 .media-subhead { margin: 38px 0 16px; }

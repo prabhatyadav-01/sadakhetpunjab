@@ -386,6 +386,8 @@ if (docCard && docModal) {
   };
 
   docCard.addEventListener("click", openDocPreview);
+  const docBtn = document.getElementById("docPreviewCardBtn");
+  if (docBtn) docBtn.addEventListener("click", openDocPreview);
   docCard.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
