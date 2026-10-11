@@ -345,14 +345,35 @@
           <h2><i class="fa-solid fa-photo-film" aria-hidden="true"></i> Stories from the field</h2>
           <p>A home for the project documentary, five visual banners and social-media reporting.</p>
         </div>
-        <article class="documentary-card glass animate-on-scroll" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
-          <div class="media-label"><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary · 16:9 <span class="preview-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Teaser preview</span></div>
-          <div class="documentary-frame">
-            <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
-            <div class="documentary-overlay"><span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span><strong>Punjab’s fields, under pressure</strong><span>Tap to inspect documentary preview &amp; chapters</span></div>
-          </div>
-          <p class="media-caption">The 16:9 documentary exploration of Punjab's climate frontline, groundwater stress and farming resilience.</p>
-        </article>
+        <div class="video-showcase-grid">
+          <!-- 16:9 Project Documentary Feature -->
+          <article class="documentary-card glass animate-on-scroll" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
+            <div class="media-label"><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary · 16:9 <span class="preview-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Teaser preview</span></div>
+            <div class="documentary-frame">
+              <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
+              <div class="documentary-overlay"><span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span><strong>Punjab’s fields, under pressure</strong><span>Tap to inspect documentary preview &amp; chapters</span></div>
+            </div>
+            <p class="media-caption">The 16:9 documentary exploration of Punjab's climate frontline, groundwater stress and farming resilience.</p>
+          </article>
+
+          <!-- 9:16 Instagram Reel / Short Video -->
+          <article class="reel-card glass animate-on-scroll">
+            <div class="media-label"><i class="fa-brands fa-instagram" style="color:#e1306c;" aria-hidden="true"></i> Field Reel · 9:16 <a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" class="preview-pill instagram-pill" aria-label="View Reel on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Open in Instagram</a></div>
+            <div class="reel-frame-container">
+              <iframe 
+                class="instagram-reel-iframe"
+                src="https://www.instagram.com/reel/DeWF00JKp46/embed" 
+                title="SADAKHET Punjab Agriculture Instagram Reel (9:16)"
+                scrolling="no" 
+                allowtransparency="true" 
+                allow="encrypted-media"
+                loading="lazy">
+              </iframe>
+            </div>
+            <p class="media-caption">Ground-level field video &amp; agricultural overview in 9:16 mobile format. Tap to play or watch on Instagram.</p>
+          </article>
+        </div>
+
         <div class="media-subhead"><h3>Five-banner gallery</h3><p>Tap any banner to view full-resolution preview.</p></div>
         <div class="banner-gallery animate-on-scroll">
           <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="01 · Wheat Heat Risk" data-desc="Assessing terminal heat stress, early senescence, and yield impacts during wheat grain filling in Punjab."><img src="./banner/01-wheat-heat-risk.png" alt="Wheat Heat Risk infographic banner" loading="lazy" decoding="async"><figcaption>01 · Wheat Heat Risk</figcaption></figure>
@@ -361,13 +382,13 @@
           <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="04 · Climate &amp; Agriculture Cycle" data-desc="Animated infographic tracking seasonal weather shifts, monsoon variability, and crop calendar dynamics."><img src="./banner/punjab-climate-agriculture-loop.gif" alt="Punjab Climate & Agriculture animated loop" loading="lazy" decoding="async"><figcaption>04 · Climate &amp; Agriculture Loop (GIF)</figcaption></figure>
           <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="05 · ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ" data-desc="Changing rainfall patterns and agricultural transitions across Punjab's agro-climatic zones."><img src="./banner/ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ.png" alt="ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ banner" loading="lazy" decoding="async"><figcaption>05 · ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ</figcaption></figure>
         </div>
-        <div class="media-subhead"><h3>Social-media analytics</h3><p>Placeholders remain until the team provides verified channel links and platform analytics.</p></div>
+        <div class="media-subhead"><h3>Social-media analytics</h3><p>Verified post links and platform distribution.</p></div>
         <div class="analytics-wrap glass">
           <table class="analytics-table">
-            <thead><tr><th scope="col">Platform</th><th scope="col">Profile or channel</th><th scope="col">Content focus</th><th scope="col">Reach / views</th><th scope="col">Period</th></tr></thead>
+            <thead><tr><th scope="col">Platform</th><th scope="col">Profile or channel</th><th scope="col">Content focus</th><th scope="col">Status / Link</th><th scope="col">Period</th></tr></thead>
             <tbody>
-              <tr><th scope="row">YouTube</th><td>Handle pending</td><td>Documentary and explainers</td><td>Analytics pending</td><td>To be set</td></tr>
-              <tr><th scope="row">Instagram</th><td>Handle pending</td><td>Field banners and short videos</td><td>Analytics pending</td><td>To be set</td></tr>
+              <tr><th scope="row">YouTube</th><td>Handle pending</td><td>Documentary and explainers</td><td>To be set</td><td>To be set</td></tr>
+              <tr><th scope="row">Instagram</th><td><a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" style="color:var(--clr-water-deep);font-weight:700;"><i class="fa-brands fa-instagram" aria-hidden="true"></i> @prabhat._.yadav_01</a></td><td>Field video &amp; agriculture report (9:16)</td><td><a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" style="color:#e1306c;font-weight:700;">Live Reel</a></td><td>Active</td></tr>
             </tbody>
           </table>
         </div>

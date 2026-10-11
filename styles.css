@@ -1227,6 +1227,7 @@ img, picture, video, canvas, svg {
     .solutions-grid { grid-template-columns: 1fr; }
     .sources-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: 1fr; }
+    .video-showcase-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
 @media (max-width: 600px) {
@@ -1340,6 +1341,7 @@ img, picture, video, canvas, svg {
     .modal-card { padding: 20px 14px; border-radius: 18px; }
     .chapter-item { flex-direction: column; gap: 4px; }
 
+    .reel-frame-container { max-width: 320px; height: 550px; }
     .anthem-fab { right: 14px; bottom: 16px; width: 46px; height: 46px; }
 }
 
@@ -1386,7 +1388,72 @@ img, picture, video, canvas, svg {
 .impact-card p { color: #555; }
 .impact-card .sol-icon { color: var(--clr-water-deep); }
 
-.documentary-card { max-width: 980px; margin: 0 auto 44px; }
+/* Video Showcase Grid (16:9 Documentary + 9:16 Vertical Reel) */
+.video-showcase-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 44px;
+}
+
+.documentary-card {
+    max-width: 100%;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reel-card {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reel-card .media-label {
+    width: 100%;
+}
+
+.instagram-pill {
+    background: linear-gradient(135deg, rgba(225, 48, 108, 0.18), rgba(253, 29, 29, 0.18));
+    border-color: rgba(225, 48, 108, 0.45);
+    color: #e1306c !important;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.instagram-pill:hover {
+    background: rgba(225, 48, 108, 0.35);
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(225, 48, 108, 0.3);
+}
+
+.reel-frame-container {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    height: 600px;
+    aspect-ratio: 9 / 16;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 10px auto 14px;
+}
+
+.instagram-reel-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: #000;
+}
+
 .documentary-frame {
     position: relative;
     overflow: hidden;
