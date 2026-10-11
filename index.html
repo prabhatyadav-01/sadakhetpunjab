@@ -63,11 +63,17 @@
       <h1>Punjab’s fields,<br><span>under pressure</span></h1>
       <p>Groundwater stress, hotter growing seasons and flood shocks are changing what it takes to grow food in Punjab.</p>
       <div class="hero-buttons">
-        <button class="btn-primary anthem-control" data-anthem-control type="button" aria-pressed="false">
-          <i class="fa-solid fa-music anthem-icon" aria-hidden="true"></i>
-          <span class="anthem-copy"><span>Punjab, Saadi Dharti</span><small class="anthem-status">Starting anthem…</small></span>
-        </button>
-        <audio id="anthemAudio" preload="none">
+        <div class="anthem-button-group">
+          <button class="btn-primary anthem-control" data-anthem-control type="button" aria-pressed="false">
+            <i class="fa-solid fa-music anthem-icon" aria-hidden="true"></i>
+            <span class="anthem-copy"><span>Punjab, Saadi Dharti</span><small class="anthem-status">Starting anthem…</small></span>
+          </button>
+          <button class="anthem-vol-btn" id="anthemVolToggle" type="button" title="Click to cycle sound percentage" aria-label="Sound Volume Percentage">
+            <i class="fa-solid fa-volume-high" id="anthemVolIcon" aria-hidden="true"></i>
+            <span id="anthemVolText">100%</span>
+          </button>
+        </div>
+        <audio id="anthemAudio" preload="auto" loop autoplay>
           <source src="punjab-saadi-dharti.mp3" type="audio/mpeg">
         </audio>
         <a href="#media" class="btn-secondary"><i class="fa-solid fa-play" aria-hidden="true"></i> Documentary &amp; gallery</a>

@@ -378,10 +378,52 @@ body {
 
 .btn-primary:active { transform: translateY(-1px); }
 
+.anthem-button-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .anthem-control {
     border: 0;
     cursor: pointer;
     text-align: left;
+}
+
+.anthem-vol-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 15px 18px;
+    background: rgba(15, 25, 20, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 40px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.anthem-vol-btn:hover {
+    background: rgba(42, 157, 143, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.anthem-vol-btn:active {
+    transform: translateY(0);
+}
+
+.anthem-vol-btn i {
+    color: var(--clr-water-light);
+    font-size: 0.95rem;
 }
 
 .anthem-copy {
@@ -1162,6 +1204,8 @@ body {
     
     /* Buttons */
     .hero-buttons { flex-direction: column; gap: 12px; width: 100%; }
+    .anthem-button-group { width: 100%; display: flex; gap: 8px; }
+    .anthem-button-group .anthem-control { flex: 1; }
     .btn-primary, .btn-secondary { 
         width: 100%; 
         justify-content: center; 

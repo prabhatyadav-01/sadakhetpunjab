@@ -38,8 +38,35 @@ if ("IntersectionObserver" in window) {
 
 const anthemAudio = document.getElementById("anthemAudio");
 const anthemControls = document.querySelectorAll("[data-anthem-control]");
+const anthemVolToggle = document.getElementById("anthemVolToggle");
+const anthemVolIcon = document.getElementById("anthemVolIcon");
+const anthemVolText = document.getElementById("anthemVolText");
 
 if (anthemAudio && anthemControls.length) {
+  // Volume presets: 1.0 (100% system sound level), 0.75, 0.5, 0.25, 0 (mute)
+  const volumeLevels = [1.0, 0.75, 0.5, 0.25, 0];
+  let volIndex = 0; // Starts at 100% full system sound percentage
+
+  const updateVolumeUI = (vol) => {
+    const pct = Math.round(vol * 100);
+    if (anthemVolText) anthemVolText.textContent = `${pct}%`;
+    if (anthemVolToggle) anthemVolToggle.title = `Sound Volume: ${pct}% system percentage (click to cycle)`;
+    if (anthemVolIcon) {
+      if (vol === 0) {
+        anthemVolIcon.className = "fa-solid fa-volume-xmark";
+      } else if (vol <= 0.4) {
+        anthemVolIcon.className = "fa-solid fa-volume-low";
+      } else {
+        anthemVolIcon.className = "fa-solid fa-volume-high";
+      }
+    }
+  };
+
+  const getStatusText = (playing) => {
+    if (!playing) return "Paused · tap to play";
+    const pct = Math.round(anthemAudio.volume * 100);
+    return `Playing · ${pct}% sound`;
+  };
 
   const showAnthemState = (playing) => {
     anthemControls.forEach((control) => {
@@ -47,30 +74,93 @@ if (anthemAudio && anthemControls.length) {
       control.setAttribute("aria-label", playing ? "Pause Punjab, Saadi Dharti" : "Play Punjab, Saadi Dharti");
       const anthemStatus = control.querySelector(".anthem-status");
       const anthemIcon = control.querySelector(".anthem-icon");
-      if (anthemStatus) anthemStatus.textContent = playing ? "Playing · tap to pause" : "Paused · tap to play";
+      if (anthemStatus) anthemStatus.textContent = getStatusText(playing);
       if (anthemIcon) anthemIcon.className = playing
         ? "fa-solid fa-pause anthem-icon"
         : "fa-solid fa-play anthem-icon";
     });
   };
 
-  anthemAudio.volume = 0.32;
+  // Set initial volume to 100% system sound percentage
+  anthemAudio.volume = volumeLevels[volIndex];
+  updateVolumeUI(anthemAudio.volume);
+
   anthemAudio.addEventListener("play", () => showAnthemState(true));
   anthemAudio.addEventListener("pause", () => showAnthemState(false));
+  anthemAudio.addEventListener("volumechange", () => {
+    updateVolumeUI(anthemAudio.volume);
+    if (!anthemAudio.paused) showAnthemState(true);
+  });
 
+  // Cycle volume levels on toggle button click
+  if (anthemVolToggle) {
+    anthemVolToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      volIndex = (volIndex + 1) % volumeLevels.length;
+      anthemAudio.volume = volumeLevels[volIndex];
+      if (anthemAudio.paused && volumeLevels[volIndex] > 0) {
+        anthemAudio.play().catch(() => {});
+      }
+    });
+  }
+
+  // Play / Pause toggle
   anthemControls.forEach((control) => control.addEventListener("click", async () => {
     if (!anthemAudio.paused) {
       anthemAudio.pause();
       return;
     }
     try {
+      if (anthemAudio.volume === 0) {
+        volIndex = 0;
+        anthemAudio.volume = volumeLevels[0];
+      }
       await anthemAudio.play();
     } catch {
       showAnthemState(false);
     }
   }));
 
-  anthemAudio.play().catch(() => showAnthemState(false));
+  // Automatic audio start on site open
+  let hasStarted = false;
+  const startAutoplay = async () => {
+    if (hasStarted || !anthemAudio.paused) return;
+    try {
+      anthemAudio.volume = volumeLevels[volIndex];
+      await anthemAudio.play();
+      hasStarted = true;
+      detachAutoplayListeners();
+    } catch {
+      // Browser autoplay policy prevented initial unmuted playback until interaction
+      showAnthemState(false);
+    }
+  };
+
+  const onUserInteraction = () => {
+    if (!hasStarted && anthemAudio.paused) {
+      startAutoplay();
+    }
+  };
+
+  const autoplayEvents = ["click", "pointerdown", "touchstart", "keydown", "scroll", "wheel"];
+  const detachAutoplayListeners = () => {
+    autoplayEvents.forEach((evt) => window.removeEventListener(evt, onUserInteraction));
+    document.removeEventListener("visibilitychange", onVisibility);
+  };
+
+  autoplayEvents.forEach((evt) => {
+    window.addEventListener(evt, onUserInteraction, { once: true, passive: true });
+  });
+
+  const onVisibility = () => {
+    if (document.visibilityState === "visible" && !hasStarted && anthemAudio.paused) {
+      startAutoplay();
+    }
+  };
+  document.addEventListener("visibilitychange", onVisibility);
+
+  // Attempt immediate play on page load
+  startAutoplay();
 }
 
 if (typeof Chart !== "undefined") {
