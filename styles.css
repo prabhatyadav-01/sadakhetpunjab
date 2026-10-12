@@ -1540,23 +1540,23 @@ html {
     gap: 8px;
 }
 
-/* 16:9 Documentary Card */
+/* 16:9 Documentary Teaser Card & Video Player */
 .documentary-frame {
     position: relative;
     overflow: hidden;
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 16px;
-    background: var(--clr-agri-dark);
+    background: #000;
     isolation: isolate;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .documentary-frame:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .documentary-frame > img {
@@ -1573,6 +1573,17 @@ html {
     transform: scale(1.04);
 }
 
+.documentary-video-player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+    border-radius: 16px;
+    display: block;
+}
+
 .documentary-overlay {
     position: absolute;
     inset: 0;
@@ -1584,6 +1595,17 @@ html {
     padding: 20px;
     color: white;
     text-align: center;
+    background: rgba(10, 24, 16, 0.5);
+    backdrop-filter: blur(2px);
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.documentary-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .documentary-overlay strong {
@@ -1599,19 +1621,51 @@ html {
 .documentary-play {
     display: grid;
     place-items: center;
-    width: 58px;
-    height: 58px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     color: white;
-    background: rgba(42, 157, 143, 0.45);
-    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    background: rgba(42, 157, 143, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 0 20px rgba(42, 157, 143, 0.4);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.documentary-frame:hover .documentary-play {
-    transform: scale(1.12);
-    background: rgba(42, 157, 143, 0.75);
+.documentary-frame:hover .documentary-play,
+.documentary-overlay:hover .documentary-play {
+    transform: scale(1.14);
+    background: rgba(42, 157, 143, 0.9);
+    box-shadow: 0 0 30px rgba(42, 157, 143, 0.7);
+}
+
+.preview-pill.live-pill {
+    background: rgba(42, 157, 143, 0.15);
+    color: var(--clr-agri-green);
+    border: 1px solid rgba(42, 157, 143, 0.4);
+    box-shadow: 0 0 10px rgba(42, 157, 143, 0.2);
+}
+
+.doc-duration-badge.live-badge {
+    color: var(--clr-agri-green);
+    background: rgba(42, 157, 143, 0.12);
+    border: 1px solid rgba(42, 157, 143, 0.3);
+}
+
+.doc-card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.doc-play-inline-btn,
+.doc-cinema-open-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 0.92rem;
+    cursor: pointer;
 }
 
 .doc-card-body {
@@ -2334,70 +2388,91 @@ html {
     cursor: pointer;
 }
 
-/* Documentary In Progress Modal */
-.doc-progress-modal-card {
-    max-width: 500px;
+/* Documentary Cinema Modal */
+.cinema-modal {
+    max-width: 920px;
+    width: min(920px, calc(100vw - 32px));
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.doc-cinema-modal-card {
+    max-width: 100%;
     margin: 0 auto;
-    text-align: center;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(12, 24, 18, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(42, 157, 143, 0.25);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 
-.doc-progress-body {
+.doc-cinema-body {
+    padding: 16px 20px 8px;
+}
+
+.cinema-video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6);
+    margin-bottom: 16px;
+}
+
+.cinema-video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+    display: block;
+}
+
+.cinema-meta-header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 14px 6px 6px;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
 }
 
-.doc-progress-icon {
-    display: grid;
-    place-items: center;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(42, 157, 143, 0.25), rgba(0, 119, 182, 0.25));
-    border: 2px solid rgba(144, 224, 239, 0.4);
-    color: var(--clr-water-light);
-    font-size: 1.75rem;
-    margin-bottom: 18px;
-    box-shadow: 0 0 28px rgba(42, 157, 143, 0.35);
-    animation: docIconPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes docIconPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(42, 157, 143, 0.25); }
-    50% { transform: scale(1.06); box-shadow: 0 0 32px rgba(42, 157, 143, 0.55); }
-}
-
-.doc-progress-body h3 {
-    font-size: clamp(1.4rem, 4vw, 1.8rem);
+.cinema-meta-header h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
     color: #fff;
-    margin-bottom: 6px;
+    margin: 0 0 4px;
 }
 
-.doc-progress-body .modal-subtitle {
-    margin-bottom: 14px;
-    font-size: 0.88rem;
-    color: var(--clr-wheat);
+.cinema-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--clr-agri-green), var(--clr-water-deep));
+    box-shadow: 0 4px 12px rgba(42, 157, 143, 0.4);
+    white-space: nowrap;
 }
 
-.doc-progress-desc {
+.doc-cinema-desc {
     color: rgba(255, 255, 255, 0.86);
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     line-height: 1.6;
-    max-width: 380px;
-    margin: 0 auto 12px;
+    margin: 0;
 }
 
-.doc-progress-footer {
+.doc-cinema-footer {
     display: flex;
-    justify-content: center;
-    padding-top: 18px;
+    justify-content: flex-end;
+    padding: 14px 20px 18px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.doc-progress-footer .modal-action-btn {
-    min-width: 130px;
 }
 
 /* Lightbox Specifics */

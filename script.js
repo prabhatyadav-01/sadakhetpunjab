@@ -372,36 +372,149 @@ if (typeof Chart !== "undefined") {
   }
 }
 
-// Documentary Preview Modal logic
-const docCard = document.getElementById("docPreviewCard");
+// Teaser Video & Cinema Modal logic
+const inlineTeaserVideo = document.getElementById("inlineTeaserVideo");
+const videoCustomOverlay = document.getElementById("videoCustomOverlay");
+const inlinePlayBtn = document.getElementById("inlinePlayBtn");
+const docCinemaBtn = document.getElementById("docPreviewCardBtn");
 const docModal = document.getElementById("docModal");
+const modalTeaserVideo = document.getElementById("modalTeaserVideo");
 const closeDocModalBtn = document.getElementById("closeDocModal");
 const confirmDocModalBtn = document.getElementById("confirmDocModal");
 
-if (docCard && docModal) {
-  const openDocPreview = () => {
+// Helper to pause background anthem whenever a video is playing
+const pauseAnthemForVideo = () => {
+  if (anthemAudio && !anthemAudio.paused) {
+    anthemAudio.pause();
+  }
+};
+
+// Inline Video Controls
+if (inlineTeaserVideo) {
+  const playInlineVideo = () => {
+    pauseAnthemForVideo();
+    if (videoCustomOverlay) {
+      videoCustomOverlay.classList.add("is-hidden");
+    }
+    inlineTeaserVideo.play().catch(() => {});
+  };
+
+  const pauseInlineVideo = () => {
+    inlineTeaserVideo.pause();
+  };
+
+  if (videoCustomOverlay) {
+    videoCustomOverlay.addEventListener("click", playInlineVideo);
+    videoCustomOverlay.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        playInlineVideo();
+      }
+    });
+  }
+
+  if (inlinePlayBtn) {
+    inlinePlayBtn.addEventListener("click", () => {
+      if (inlineTeaserVideo.paused) {
+        playInlineVideo();
+      } else {
+        pauseInlineVideo();
+      }
+    });
+  }
+
+  inlineTeaserVideo.addEventListener("play", () => {
+    pauseAnthemForVideo();
+    if (videoCustomOverlay) videoCustomOverlay.classList.add("is-hidden");
+    if (inlinePlayBtn) {
+      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pause Teaser';
+    }
+  });
+
+  inlineTeaserVideo.addEventListener("pause", () => {
+    if (inlinePlayBtn) {
+      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> Play Teaser';
+    }
+  });
+
+  inlineTeaserVideo.addEventListener("ended", () => {
+    if (videoCustomOverlay) videoCustomOverlay.classList.remove("is-hidden");
+    if (inlinePlayBtn) {
+      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Replay Teaser';
+    }
+  });
+}
+
+// Cinema Modal Controls
+if (docModal) {
+  const openCinemaModal = () => {
+    pauseAnthemForVideo();
+    if (inlineTeaserVideo) {
+      if (!inlineTeaserVideo.paused) {
+        inlineTeaserVideo.pause();
+      }
+      if (modalTeaserVideo) {
+        try {
+          modalTeaserVideo.currentTime = inlineTeaserVideo.currentTime || 0;
+        } catch (_) {}
+      }
+    }
+
     if (typeof docModal.showModal === "function") {
       docModal.showModal();
     }
+
+    if (modalTeaserVideo) {
+      modalTeaserVideo.play().catch(() => {});
+    }
   };
 
-  docCard.addEventListener("click", openDocPreview);
-  const docBtn = document.getElementById("docPreviewCardBtn");
-  if (docBtn) docBtn.addEventListener("click", openDocPreview);
-  docCard.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openDocPreview();
+  const closeCinemaModal = () => {
+    if (modalTeaserVideo) {
+      modalTeaserVideo.pause();
+      if (inlineTeaserVideo) {
+        try {
+          inlineTeaserVideo.currentTime = modalTeaserVideo.currentTime || 0;
+        } catch (_) {}
+      }
+    }
+    if (docModal.open) {
+      docModal.close();
+    }
+  };
+
+  if (docCinemaBtn) {
+    docCinemaBtn.addEventListener("click", openCinemaModal);
+  }
+
+  if (closeDocModalBtn) {
+    closeDocModalBtn.addEventListener("click", closeCinemaModal);
+  }
+
+  if (confirmDocModalBtn) {
+    confirmDocModalBtn.addEventListener("click", closeCinemaModal);
+  }
+
+  docModal.addEventListener("click", (e) => {
+    if (e.target === docModal) {
+      closeCinemaModal();
     }
   });
 
-  const closeDoc = () => docModal.close();
-  if (closeDocModalBtn) closeDocModalBtn.addEventListener("click", closeDoc);
-  if (confirmDocModalBtn) confirmDocModalBtn.addEventListener("click", closeDoc);
-
-  docModal.addEventListener("click", (e) => {
-    if (e.target === docModal) docModal.close();
+  docModal.addEventListener("close", () => {
+    if (modalTeaserVideo && !modalTeaserVideo.paused) {
+      modalTeaserVideo.pause();
+    }
   });
+
+  if (modalTeaserVideo) {
+    modalTeaserVideo.addEventListener("play", () => {
+      pauseAnthemForVideo();
+      if (inlineTeaserVideo && !inlineTeaserVideo.paused) {
+        inlineTeaserVideo.pause();
+      }
+    });
+  }
 }
 
 // Image Lightbox Preview logic

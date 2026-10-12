@@ -94,6 +94,16 @@
             "name": "Climate Change"
           }
         ]
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://sadakhetpunjabindia.vercel.app/#teaser-video",
+        "name": "Punjab’s Fields, Under Pressure — Official Research Teaser",
+        "description": "Official documentary teaser exploring groundwater depletion, heatwaves, and agricultural resilience across Punjab, India.",
+        "thumbnailUrl": "https://sadakhetpunjabindia.vercel.app/hero-bg.jpg",
+        "uploadDate": "2026-10-12",
+        "contentUrl": "https://sadakhetpunjabindia.vercel.app/video/teaser.mp4",
+        "embedUrl": "https://sadakhetpunjabindia.vercel.app/#media"
       }
     ]
   }
@@ -173,7 +183,7 @@
         <audio id="anthemAudio" preload="auto" loop autoplay>
           <source src="punjab-saadi-dharti.mp3" type="audio/mpeg">
         </audio>
-        <a href="#media" class="btn-secondary"><i class="fa-solid fa-play" aria-hidden="true"></i> Documentary &amp; gallery</a>
+        <a href="#media" class="btn-secondary"><i class="fa-solid fa-play" aria-hidden="true"></i> Watch Teaser &amp; gallery</a>
       </div>
     </div>
     <div class="hero-wave" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none"><path class="wave-path wave1" d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120 Z"/><path class="wave-path wave2" d="M0,80 C360,20 1080,120 1440,80 L1440,120 L0,120 Z"/></svg></div>
@@ -443,29 +453,44 @@
           <p>A home for the project documentary, five visual banners and social-media reporting.</p>
         </div>
         <div class="video-showcase-grid">
-          <!-- 16:9 Project Documentary Feature -->
+          <!-- 16:9 Project Documentary Teaser Feature -->
           <article class="media-feature-card glass animate-on-scroll">
             <div class="media-label">
               <span><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary</span>
-              <span class="preview-pill"><i class="fa-solid fa-clock" aria-hidden="true"></i> In Progress</span>
+              <span class="preview-pill live-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Official Teaser</span>
             </div>
-            <div class="documentary-frame" id="docPreviewCard" role="button" tabindex="0" aria-label="Open Documentary Preview Modal">
-              <img src="hero-bg.jpg" alt="Punjab agricultural landscape" loading="lazy" decoding="async">
-              <div class="documentary-overlay">
+            <div class="documentary-frame video-player-container" id="docVideoContainer">
+              <video 
+                id="inlineTeaserVideo" 
+                class="documentary-video-player"
+                playsinline 
+                controls
+                preload="metadata" 
+                poster="hero-bg.jpg"
+                aria-label="SADAKHET Punjab Agriculture Research Teaser Video">
+                <source src="video/teaser.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="documentary-overlay" id="videoCustomOverlay" role="button" tabindex="0" aria-label="Play Teaser Video">
                 <span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
                 <strong>Punjab’s fields, under pressure</strong>
-                <span>Documentary in Progress · Tap to view</span>
+                <span>Official Research Teaser · Tap to play inline</span>
               </div>
             </div>
             <div class="doc-card-body">
               <div class="doc-card-header">
                 <h3>Punjab’s fields, under pressure</h3>
-                <span class="doc-duration-badge"><i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> In Progress</span>
+                <span class="doc-duration-badge live-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Teaser Available</span>
               </div>
-              <p class="doc-card-desc">An investigative exploration tracking tubewell stress across 110 over-exploited blocks, terminal heat shocks during wheat grain filling, and field silt rehabilitation following the 2025 floods.</p>
-              <button type="button" class="btn-primary doc-modal-btn" id="docPreviewCardBtn">
-                <i class="fa-solid fa-film" aria-hidden="true"></i> Watch Documentary
-              </button>
+              <p class="doc-card-desc">An investigative preview tracking tubewell stress across 110 over-exploited blocks, terminal heat shocks during wheat grain filling, and field silt rehabilitation following the 2025 floods.</p>
+              <div class="doc-card-actions">
+                <button type="button" class="btn-primary doc-play-inline-btn" id="inlinePlayBtn" aria-label="Play Teaser Video">
+                  <i class="fa-solid fa-play" aria-hidden="true"></i> Play Teaser
+                </button>
+                <button type="button" class="btn-secondary doc-cinema-open-btn" id="docPreviewCardBtn" aria-label="Watch Teaser in Cinema Mode">
+                  <i class="fa-solid fa-expand" aria-hidden="true"></i> Cinema Mode
+                </button>
+              </div>
             </div>
           </article>
 
@@ -512,7 +537,7 @@
           <table class="analytics-table">
             <thead><tr><th scope="col">Platform</th><th scope="col">Profile or channel</th><th scope="col">Content focus</th><th scope="col">Status / Link</th><th scope="col">Period</th></tr></thead>
             <tbody>
-              <tr><th scope="row">YouTube</th><td>Handle pending</td><td>Documentary and explainers</td><td>To be set</td><td>To be set</td></tr>
+              <tr><th scope="row">Project Teaser</th><td>On-Site Player</td><td>Punjab Fields Under Pressure (16:9)</td><td><a href="#media" style="color:var(--clr-water-deep);font-weight:700;"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Watch Now</a></td><td>Available</td></tr>
               <tr><th scope="row">Instagram</th><td><a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" style="color:var(--clr-water-deep);font-weight:700;"><i class="fa-brands fa-instagram" aria-hidden="true"></i> @prabhat._.yadav_01</a></td><td>Field video &amp; agriculture report (9:16)</td><td><a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" style="color:#e1306c;font-weight:700;">Live Reel</a></td><td>Active</td></tr>
             </tbody>
           </table>
@@ -595,23 +620,40 @@
     <button type="button" class="autoplay-close" id="closeAutoplayBanner" aria-label="Dismiss banner">&times;</button>
   </div>
 
-  <!-- Documentary Preview Modal -->
-  <dialog id="docModal" class="preview-modal" aria-labelledby="docModalTitle">
-    <div class="modal-card glass-dark doc-progress-modal-card">
+  <!-- Documentary Cinema Modal -->
+  <dialog id="docModal" class="preview-modal cinema-modal" aria-labelledby="docModalTitle">
+    <div class="modal-card glass-dark doc-cinema-modal-card">
       <div class="modal-header">
-        <div class="modal-badge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> Production Status</div>
+        <div class="modal-badge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> Research Cinema Experience</div>
         <button type="button" class="modal-close" id="closeDocModal" aria-label="Close modal">&times;</button>
       </div>
-      <div class="modal-body doc-progress-body">
-        <div class="doc-progress-icon" aria-hidden="true">
-          <i class="fa-solid fa-film"></i>
+      <div class="modal-body doc-cinema-body">
+        <div class="cinema-video-wrapper">
+          <video 
+            id="modalTeaserVideo" 
+            class="cinema-video-player"
+            playsinline 
+            controls 
+            preload="metadata" 
+            poster="hero-bg.jpg"
+            aria-label="SADAKHET Punjab Agriculture Teaser Cinema Player">
+            <source src="video/teaser.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
-        <h3 id="docModalTitle">Documentary in Progress</h3>
-        <p class="modal-subtitle">Punjab’s fields, under pressure · SADAKHET</p>
-        <p class="doc-progress-desc">Our investigative documentary feature is currently in production and editing. Stay tuned for the upcoming release!</p>
+        <div class="cinema-meta">
+          <div class="cinema-meta-header">
+            <div>
+              <h3 id="docModalTitle">Punjab’s fields, under pressure</h3>
+              <p class="modal-subtitle">SADAKHET Documentary Teaser · CHE 110 Research Study</p>
+            </div>
+            <span class="cinema-tag"><i class="fa-solid fa-video" aria-hidden="true"></i> Official Teaser</span>
+          </div>
+          <p class="doc-cinema-desc">Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation.</p>
+        </div>
       </div>
-      <div class="modal-footer doc-progress-footer">
-        <button type="button" class="btn-primary modal-action-btn" id="confirmDocModal">Close</button>
+      <div class="modal-footer doc-cinema-footer">
+        <button type="button" class="btn-secondary modal-action-btn" id="confirmDocModal">Close Cinema</button>
       </div>
     </div>
   </dialog>
