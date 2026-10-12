@@ -487,7 +487,7 @@
               <button type="button" class="btn-primary doc-play-inline-btn" id="inlinePlayBtn" aria-label="Play Full Documentary">
                 <i class="fa-solid fa-play" aria-hidden="true"></i> Play Documentary
               </button>
-              <button type="button" class="btn-secondary doc-cinema-open-btn" id="docPreviewCardBtn" aria-label="Watch Documentary in Cinema Mode">
+              <button type="button" class="btn-secondary doc-cinema-open-btn" id="docPreviewCardBtn" data-video-src="video/Full Version.mp4" data-video-poster="video/Full Version.jpg" aria-label="Watch Documentary in Cinema Mode">
                 <i class="fa-solid fa-expand" aria-hidden="true"></i> Cinema Mode
               </button>
             </div>
@@ -517,7 +517,7 @@
             <div class="cutout-info">
               <h4>Punjab · Ground Realities</h4>
               <p>Over-extracted aquifers, declining groundwater tables, and deep tubewell electricity demands in 110 over-exploited blocks.</p>
-              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Punjab.mp4" data-video-title="Punjab · Ground Realities" data-video-desc="Over-extracted aquifers and deep tubewell reliance across Punjab's 110 critical blocks.">
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Punjab.mp4" data-video-poster="video/Punjab.jpg" data-video-title="Punjab · Ground Realities" data-video-desc="Over-extracted aquifers and deep tubewell reliance across Punjab's 110 critical blocks.">
                 <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
               </button>
             </div>
@@ -540,7 +540,7 @@
             <div class="cutout-info">
               <h4>Green Revolution &amp; Crop Shift</h4>
               <p>Historical transition to intensive wheat-paddy rotations, monoculture vulnerability, and terminal heat stress during grain filling.</p>
-              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Green Revolution.mp4" data-video-title="Green Revolution &amp; Crop Shift" data-video-desc="Intensive cropping dynamics, terminal heatwaves, and historical transitions across Punjab.">
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Green Revolution.mp4" data-video-poster="video/Green Revolution.jpg" data-video-title="Green Revolution &amp; Crop Shift" data-video-desc="Intensive cropping dynamics, terminal heatwaves, and historical transitions across Punjab.">
                 <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
               </button>
             </div>
@@ -563,7 +563,7 @@
             <div class="cutout-info">
               <h4>Web Overview · Research Context</h4>
               <p>Comprehensive video orientation highlighting data mapping, flood impact studies, and field evidence gathered for CHE 110.</p>
-              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/WebOverview.mp4" data-video-title="Web Overview · Research Context" data-video-desc="Interactive orientation covering Punjab agricultural data, flood impacts, and research sources.">
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/WebOverview.mp4" data-video-poster="video/WebOverview.jpg" data-video-title="Web Overview · Research Context" data-video-desc="Interactive orientation covering Punjab agricultural data, flood impacts, and research sources.">
                 <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
               </button>
             </div>
@@ -586,7 +586,7 @@
             <div class="cutout-info">
               <h4>Solutions &amp; Cultural Roots</h4>
               <p>Direct seeded rice (DSR), canal water restoration, and community resilience set to the cultural anthem celebrating the soil.</p>
-              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Solutions &amp; Song.mp4" data-video-title="Solutions &amp; Cultural Roots" data-video-desc="Actionable field solutions combined with cultural connection to Punjab's fertile land.">
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Solutions &amp; Song.mp4" data-video-poster="video/Solutions &amp; Song.jpg" data-video-title="Solutions &amp; Cultural Roots" data-video-desc="Actionable field solutions combined with cultural connection to Punjab's fertile land.">
                 <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
               </button>
             </div>
@@ -609,7 +609,7 @@
             <div class="cutout-info">
               <h4>Official Research Teaser</h4>
               <p>A fast-paced 24-second visual overview summarizing the three core agricultural challenges explored in this study.</p>
-              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/teaser.mp4" data-video-title="Official Research Teaser" data-video-desc="Quick 24-second executive preview of the SADAKHET project.">
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/teaser.mp4" data-video-poster="video/teaser.jpg" data-video-title="Official Research Teaser" data-video-desc="Quick 24-second executive preview of the SADAKHET project.">
                 <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
               </button>
             </div>
@@ -710,12 +710,15 @@
             class="cinema-video-player"
             playsinline 
             controls 
-            preload="metadata" 
+            preload="auto" 
             poster="video/Full Version.jpg"
-            aria-label="SADAKHET Punjab Agriculture Teaser Cinema Player">
-            <source src="video/Full Version.mp4" type="video/mp4">
+            aria-label="SADAKHET Punjab Agriculture Research Cinema Player">
             Your browser does not support the video tag.
           </video>
+          <div class="cinema-play-overlay is-hidden" id="cinemaPlayOverlay" role="button" tabindex="0" aria-label="Play Video with Audio">
+            <span class="cinema-play-pulse"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
+            <span class="cinema-play-text">Click to Play with Sound</span>
+          </div>
         </div>
         <div class="cinema-meta">
           <div class="cinema-meta-header">

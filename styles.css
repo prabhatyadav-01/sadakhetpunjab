@@ -2369,6 +2369,57 @@ html {
     display: block;
 }
 
+.cinema-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(10, 24, 16, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 3;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cinema-play-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.cinema-play-pulse {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--clr-agri-green), var(--clr-water-deep));
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 24px rgba(42, 157, 143, 0.6);
+    font-size: 1.4rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cinema-play-overlay:hover .cinema-play-pulse {
+    transform: scale(1.12);
+    box-shadow: 0 0 36px rgba(42, 157, 143, 0.9);
+}
+
+.cinema-play-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
 .cinema-meta-header {
     display: flex;
     align-items: flex-start;

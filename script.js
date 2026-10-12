@@ -477,11 +477,25 @@ if (inlineTeaserVideo) {
 
 // Cinema Modal Controls
 if (docModal) {
-  const openCinemaModal = (videoSrc, videoTitle, videoDesc) => {
+  const cinemaPlayOverlay = document.getElementById("cinemaPlayOverlay");
+
+  const openCinemaModal = (videoSrc, videoTitle, videoDesc, videoPoster) => {
     pauseOtherVideos(modalTeaserVideo);
 
     if (modalTeaserVideo) {
       const targetSrc = videoSrc || "video/Full Version.mp4";
+      const targetPoster = videoPoster || (
+        targetSrc.includes("Punjab") ? "video/Punjab.jpg" :
+        targetSrc.includes("Green") ? "video/Green Revolution.jpg" :
+        targetSrc.includes("Web") ? "video/WebOverview.jpg" :
+        targetSrc.includes("Solution") ? "video/Solutions & Song.jpg" :
+        targetSrc.includes("teaser") ? "video/teaser.jpg" :
+        "video/Full Version.jpg"
+      );
+
+      // Explicitly update poster so every video shows its own matching thumbnail
+      modalTeaserVideo.poster = targetPoster;
+
       const currentSrcNorm = modalTeaserVideo.currentSrc || "";
       const isSameSrc = currentSrcNorm && (
         currentSrcNorm.endsWith(targetSrc) || 
@@ -490,7 +504,9 @@ if (docModal) {
       );
 
       if (!isSameSrc) {
+        modalTeaserVideo.pause();
         modalTeaserVideo.src = targetSrc;
+        modalTeaserVideo.currentTime = 0;
         modalTeaserVideo.load();
       }
 
@@ -512,16 +528,34 @@ if (docModal) {
     }
 
     if (modalTeaserVideo) {
-      const playPromise = modalTeaserVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.warn("Unmuted cinema playback blocked by browser, attempting muted playback:", err);
-          modalTeaserVideo.muted = true;
-          modalTeaserVideo.play().catch((e) => {
-            console.warn("Autoplay blocked, user interaction on controls required:", e);
-          });
-        });
-      }
+      const attemptPlayback = () => {
+        const playPromise = modalTeaserVideo.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              if (cinemaPlayOverlay) cinemaPlayOverlay.classList.add("is-hidden");
+            })
+            .catch((err) => {
+              console.warn("Unmuted cinema playback restricted, attempting muted:", err);
+              modalTeaserVideo.muted = true;
+              modalTeaserVideo.play()
+                .then(() => {
+                  if (cinemaPlayOverlay) cinemaPlayOverlay.classList.add("is-hidden");
+                })
+                .catch(() => {
+                  if (cinemaPlayOverlay) cinemaPlayOverlay.classList.remove("is-hidden");
+                });
+            });
+        }
+      };
+
+      attemptPlayback();
+
+      modalTeaserVideo.addEventListener("canplay", () => {
+        if (modalTeaserVideo.paused) {
+          attemptPlayback();
+        }
+      }, { once: true });
     }
   };
 
@@ -529,17 +563,40 @@ if (docModal) {
     if (modalTeaserVideo) {
       modalTeaserVideo.pause();
     }
+    if (cinemaPlayOverlay) {
+      cinemaPlayOverlay.classList.add("is-hidden");
+    }
     if (docModal.open) {
       docModal.close();
     }
   };
 
+  if (cinemaPlayOverlay) {
+    cinemaPlayOverlay.addEventListener("click", () => {
+      if (modalTeaserVideo) {
+        modalTeaserVideo.muted = false;
+        modalTeaserVideo.play().catch(() => {});
+        cinemaPlayOverlay.classList.add("is-hidden");
+      }
+    });
+  }
+
+  if (modalTeaserVideo) {
+    modalTeaserVideo.addEventListener("play", () => {
+      pauseOtherVideos(modalTeaserVideo);
+      if (cinemaPlayOverlay) cinemaPlayOverlay.classList.add("is-hidden");
+    });
+  }
+
   if (docCinemaBtn) {
     docCinemaBtn.addEventListener("click", () => {
+      const src = docCinemaBtn.getAttribute("data-video-src") || "video/Full Version.mp4";
+      const poster = docCinemaBtn.getAttribute("data-video-poster") || "video/Full Version.jpg";
       openCinemaModal(
-        "video/Full Version.mp4",
+        src,
         "Punjab’s fields, under pressure · Full Documentary",
-        "Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation."
+        "Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation.",
+        poster
       );
     });
   }
@@ -550,7 +607,8 @@ if (docModal) {
       const src = btn.getAttribute("data-video-src");
       const title = btn.getAttribute("data-video-title");
       const desc = btn.getAttribute("data-video-desc");
-      openCinemaModal(src, title, desc);
+      const poster = btn.getAttribute("data-video-poster");
+      openCinemaModal(src, title, desc, poster);
     });
   });
 
