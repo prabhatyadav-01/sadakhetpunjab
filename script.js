@@ -417,7 +417,16 @@ if (inlineTeaserVideo) {
     if (videoCustomOverlay) {
       videoCustomOverlay.classList.add("is-hidden");
     }
-    inlineTeaserVideo.play().catch(() => {});
+    const playPromise = inlineTeaserVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        console.warn("Unmuted inline video playback blocked, attempting muted playback:", err);
+        inlineTeaserVideo.muted = true;
+        inlineTeaserVideo.play().catch((e) => {
+          console.error("Inline video playback error:", e);
+        });
+      });
+    }
   };
 
   const pauseInlineVideo = () => {
@@ -472,13 +481,17 @@ if (docModal) {
     pauseOtherVideos(modalTeaserVideo);
 
     if (modalTeaserVideo) {
-      if (videoSrc) {
-        // If switching source, update src
-        if (!modalTeaserVideo.currentSrc || !modalTeaserVideo.currentSrc.includes(encodeURI(videoSrc))) {
-          modalTeaserVideo.src = videoSrc;
-        }
-      } else {
-        modalTeaserVideo.src = "video/Full Version.mp4";
+      const targetSrc = videoSrc || "video/Full Version.mp4";
+      const currentSrcNorm = modalTeaserVideo.currentSrc || "";
+      const isSameSrc = currentSrcNorm && (
+        currentSrcNorm.endsWith(targetSrc) || 
+        currentSrcNorm.endsWith(encodeURI(targetSrc)) ||
+        currentSrcNorm.includes(encodeURI(targetSrc))
+      );
+
+      if (!isSameSrc) {
+        modalTeaserVideo.src = targetSrc;
+        modalTeaserVideo.load();
       }
 
       if (videoTitle && docModalTitle) {
@@ -499,7 +512,16 @@ if (docModal) {
     }
 
     if (modalTeaserVideo) {
-      modalTeaserVideo.play().catch(() => {});
+      const playPromise = modalTeaserVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn("Unmuted cinema playback blocked by browser, attempting muted playback:", err);
+          modalTeaserVideo.muted = true;
+          modalTeaserVideo.play().catch((e) => {
+            console.warn("Autoplay blocked, user interaction on controls required:", e);
+          });
+        });
+      }
     }
   };
 

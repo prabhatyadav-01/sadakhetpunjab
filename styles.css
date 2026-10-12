@@ -1647,18 +1647,72 @@ html {
 
 .doc-card-actions {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     margin-top: auto;
     width: 100%;
+    align-items: stretch;
 }
 
-.doc-play-inline-btn,
+.doc-play-inline-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 20px;
+    font-size: 0.94rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .doc-cinema-open-btn {
     flex: 1;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    padding: 13px 18px;
-    font-size: 0.92rem;
+    gap: 9px;
+    padding: 13px 20px;
+    font-size: 0.94rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    border-radius: 50px;
     cursor: pointer;
+    background: #ffffff;
+    color: var(--clr-water-deep) !important;
+    border: 2px solid var(--clr-water-deep);
+    box-shadow:
+        0 4px 0 rgba(0, 119, 182, 0.22),
+        0 8px 20px rgba(0, 119, 182, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.doc-cinema-open-btn i {
+    color: var(--clr-water-deep);
+    transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.doc-cinema-open-btn:hover {
+    background: linear-gradient(145deg, #2fcfbe 0%, #0096c7 50%, #0077b6 100%);
+    color: #ffffff !important;
+    border-color: transparent;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 8px 0 rgba(0, 60, 100, 0.45),
+        0 14px 30px rgba(0, 119, 182, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.doc-cinema-open-btn:hover i {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+.doc-cinema-open-btn:active {
+    transform: translateY(-1px);
+    box-shadow:
+        0 2px 0 rgba(0, 60, 100, 0.45),
+        0 4px 12px rgba(0, 119, 182, 0.3);
 }
 
 .doc-card-body {
@@ -1835,22 +1889,44 @@ html {
 }
 
 .cutout-cinema-btn {
-    width: 100%;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    padding: 10px 16px;
-    font-size: 0.86rem;
-    font-weight: 600;
+    gap: 8px;
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: var(--font-body);
     border-radius: 12px;
     cursor: pointer;
-    border-color: rgba(0, 119, 182, 0.35);
-    color: var(--clr-water-deep);
+    border: 1.5px solid rgba(0, 119, 182, 0.45);
+    color: var(--clr-water-deep) !important;
     background: rgba(0, 119, 182, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.08);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cutout-cinema-btn i {
+    color: var(--clr-water-deep);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .cutout-cinema-btn:hover {
-    background: var(--clr-water-deep);
-    color: #fff;
-    border-color: var(--clr-water-deep);
+    background: linear-gradient(135deg, var(--clr-agri-green), var(--clr-water-deep));
+    color: #ffffff !important;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 119, 182, 0.32);
+}
+
+.cutout-cinema-btn:hover i {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+.cutout-cinema-btn:active {
+    transform: translateY(0);
 }
 
 /* Responsive UI Consistency for Media & Modals across Mobile and Desktop */
@@ -2227,10 +2303,26 @@ html {
 }
 
 .modal-action-btn {
-    padding: 10px 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
     font-size: 0.88rem;
+    font-weight: 700;
     border-radius: 24px;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+.modal-action-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Documentary Cinema Modal */
