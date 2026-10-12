@@ -385,11 +385,6 @@ const docModalDesc = document.getElementById("docModalDesc");
 const closeDocModalBtn = document.getElementById("closeDocModal");
 const confirmDocModalBtn = document.getElementById("confirmDocModal");
 
-// Scene 2 Entrance Popup Elements
-const scene2PopupModal = document.getElementById("scene2PopupModal");
-const scene2PopupVideo = document.getElementById("scene2PopupVideo");
-const closeScene2ModalBtn = document.getElementById("closeScene2Modal");
-const continueToSiteBtn = document.getElementById("continueToSiteBtn");
 
 // Helper to pause background anthem whenever any video is playing
 const pauseAnthemForVideo = () => {
@@ -483,7 +478,7 @@ if (docModal) {
           modalTeaserVideo.src = videoSrc;
         }
       } else {
-        modalTeaserVideo.src = "video/Final Version.mp4";
+        modalTeaserVideo.src = "video/Full Version.mp4";
       }
 
       if (videoTitle && docModalTitle) {
@@ -520,7 +515,7 @@ if (docModal) {
   if (docCinemaBtn) {
     docCinemaBtn.addEventListener("click", () => {
       openCinemaModal(
-        "video/Final Version.mp4",
+        "video/Full Version.mp4",
         "Punjab’s fields, under pressure · Full Documentary",
         "Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation."
       );
@@ -558,93 +553,6 @@ if (docModal) {
   });
 }
 
-// Scene 2 Entrance Popup logic
-if (scene2PopupModal && scene2PopupVideo) {
-  const entryUnmuteBtn = document.getElementById("entryUnmuteBtn");
-  const entryUnmuteIcon = document.getElementById("entryUnmuteIcon");
-  const entryUnmuteText = document.getElementById("entryUnmuteText");
-
-  const updateUnmuteUI = () => {
-    if (!entryUnmuteBtn) return;
-    if (scene2PopupVideo.muted) {
-      if (entryUnmuteIcon) entryUnmuteIcon.className = "fa-solid fa-volume-xmark";
-      if (entryUnmuteText) entryUnmuteText.textContent = "Tap for Sound";
-      entryUnmuteBtn.style.background = "rgba(214, 40, 40, 0.85)";
-    } else {
-      if (entryUnmuteIcon) entryUnmuteIcon.className = "fa-solid fa-volume-high";
-      if (entryUnmuteText) entryUnmuteText.textContent = "Sound On";
-      entryUnmuteBtn.style.background = "rgba(42, 157, 143, 0.85)";
-    }
-  };
-
-  if (entryUnmuteBtn) {
-    entryUnmuteBtn.addEventListener("click", () => {
-      scene2PopupVideo.muted = !scene2PopupVideo.muted;
-      updateUnmuteUI();
-    });
-  }
-
-  scene2PopupVideo.addEventListener("volumechange", updateUnmuteUI);
-
-  const openScene2Popup = () => {
-    pauseOtherVideos(scene2PopupVideo);
-
-    if (typeof scene2PopupModal.showModal === "function") {
-      scene2PopupModal.showModal();
-    }
-
-    // Attempt autoplay upon entry
-    const playPromise = scene2PopupVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        updateUnmuteUI();
-      }).catch(() => {
-        // Browser autoplay policy restricted audio; fall back to muted autoplay
-        scene2PopupVideo.muted = true;
-        updateUnmuteUI();
-        scene2PopupVideo.play().catch(() => {});
-      });
-    }
-  };
-
-  const closeScene2Popup = () => {
-    if (scene2PopupVideo) {
-      scene2PopupVideo.pause();
-    }
-    if (scene2PopupModal.open) {
-      scene2PopupModal.close();
-    }
-  };
-
-  if (closeScene2ModalBtn) {
-    closeScene2ModalBtn.addEventListener("click", closeScene2Popup);
-  }
-
-  if (continueToSiteBtn) {
-    continueToSiteBtn.addEventListener("click", closeScene2Popup);
-  }
-
-  scene2PopupModal.addEventListener("click", (e) => {
-    if (e.target === scene2PopupModal) {
-      closeScene2Popup();
-    }
-  });
-
-  scene2PopupModal.addEventListener("close", () => {
-    if (scene2PopupVideo && !scene2PopupVideo.paused) {
-      scene2PopupVideo.pause();
-    }
-  });
-
-  // Automatically trigger Scene 2 popup when user enters the site
-  window.addEventListener("DOMContentLoaded", () => {
-    setTimeout(openScene2Popup, 300);
-  });
-  // Fallback in case DOMContentLoaded has already fired
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-    setTimeout(openScene2Popup, 350);
-  }
-}
 
 // Image Lightbox Preview logic
 const lightboxModal = document.getElementById("lightboxModal");
