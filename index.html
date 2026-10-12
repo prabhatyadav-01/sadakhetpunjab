@@ -448,78 +448,170 @@
     <section id="media" class="section bg-light">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Media &amp; outreach</span>
+          <span class="section-tag">Media &amp; documentary</span>
           <h2><i class="fa-solid fa-photo-film" aria-hidden="true"></i> Stories from the field</h2>
-          <p>A home for the project documentary, five visual banners and social-media reporting.</p>
+          <p>A home for the full project documentary, on-ground scene cutouts, and visual research banners.</p>
         </div>
-        <div class="video-showcase-grid">
-          <!-- 16:9 Project Documentary Teaser Feature -->
-          <article class="media-feature-card glass animate-on-scroll">
-            <div class="media-label">
-              <span><i class="fa-solid fa-film blue" aria-hidden="true"></i> Project documentary</span>
-              <span class="preview-pill live-pill"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Official Teaser</span>
+
+        <!-- Featured Full Documentary Feature Card -->
+        <article class="media-hero-card glass animate-on-scroll">
+          <div class="media-label">
+            <span><i class="fa-solid fa-film blue" aria-hidden="true"></i> Investigative documentary</span>
+            <span class="preview-pill live-pill"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Full Cut · 04:59</span>
+          </div>
+          <div class="documentary-frame video-player-container" id="docVideoContainer">
+            <video 
+              id="inlineTeaserVideo" 
+              class="documentary-video-player"
+              playsinline 
+              controls
+              preload="metadata" 
+              poster="hero-bg.jpg"
+              aria-label="SADAKHET Punjab Agriculture Research Full Documentary">
+              <source src="video/Final Version.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="documentary-overlay" id="videoCustomOverlay" role="button" tabindex="0" aria-label="Play Full Documentary">
+              <span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
+              <strong>Punjab’s fields, under pressure</strong>
+              <span>Full Investigative Documentary (04:59) · Tap to play inline</span>
             </div>
-            <div class="documentary-frame video-player-container" id="docVideoContainer">
+          </div>
+          <div class="doc-card-body">
+            <div class="doc-card-header">
+              <h3>Punjab’s fields, under pressure · Full Documentary</h3>
+              <span class="doc-duration-badge live-badge"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> 04:59 Runtime</span>
+            </div>
+            <p class="doc-card-desc">An in-depth investigative study tracking groundwater extraction deficits across Punjab's 110 over-exploited blocks, terminal heat shocks during wheat grain filling, flood silt damage, and viable agricultural adaptation strategies.</p>
+            <div class="doc-card-actions">
+              <button type="button" class="btn-primary doc-play-inline-btn" id="inlinePlayBtn" aria-label="Play Full Documentary">
+                <i class="fa-solid fa-play" aria-hidden="true"></i> Play Documentary
+              </button>
+              <button type="button" class="btn-secondary doc-cinema-open-btn" id="docPreviewCardBtn" aria-label="Watch Documentary in Cinema Mode">
+                <i class="fa-solid fa-expand" aria-hidden="true"></i> Cinema Mode
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Cutouts & Scene Chapters -->
+        <div class="media-subhead">
+          <h3>Field scene cutouts</h3>
+          <p>Key investigative chapters and field recordings tracking Punjab's agricultural pressures.</p>
+        </div>
+        <div class="cutouts-grid animate-on-scroll">
+          <!-- Scene 2 -->
+          <article class="cutout-card glass">
+            <div class="cutout-media-wrapper">
               <video 
-                id="inlineTeaserVideo" 
-                class="documentary-video-player"
+                class="cutout-video" 
                 playsinline 
-                controls
+                controls 
                 preload="metadata" 
-                poster="hero-bg.jpg"
-                aria-label="SADAKHET Punjab Agriculture Research Teaser Video">
-                <source src="video/teaser.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                poster="tube-well.jpg"
+                aria-label="Scene 02: Groundwater Stress">
+                <source src="video/Scene 2.mp4" type="video/mp4">
               </video>
-              <div class="documentary-overlay" id="videoCustomOverlay" role="button" tabindex="0" aria-label="Play Teaser Video">
-                <span class="documentary-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
-                <strong>Punjab’s fields, under pressure</strong>
-                <span>Official Research Teaser · Tap to play inline</span>
-              </div>
+              <span class="cutout-badge"><i class="fa-solid fa-droplet" aria-hidden="true"></i> Scene 02 · 00:45</span>
             </div>
-            <div class="doc-card-body">
-              <div class="doc-card-header">
-                <h3>Punjab’s fields, under pressure</h3>
-                <span class="doc-duration-badge live-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Teaser Available</span>
-              </div>
-              <p class="doc-card-desc">An investigative preview tracking tubewell stress across 110 over-exploited blocks, terminal heat shocks during wheat grain filling, and field silt rehabilitation following the 2025 floods.</p>
-              <div class="doc-card-actions">
-                <button type="button" class="btn-primary doc-play-inline-btn" id="inlinePlayBtn" aria-label="Play Teaser Video">
-                  <i class="fa-solid fa-play" aria-hidden="true"></i> Play Teaser
-                </button>
-                <button type="button" class="btn-secondary doc-cinema-open-btn" id="docPreviewCardBtn" aria-label="Watch Teaser in Cinema Mode">
-                  <i class="fa-solid fa-expand" aria-hidden="true"></i> Cinema Mode
-                </button>
-              </div>
+            <div class="cutout-info">
+              <h4>Scene 02: Groundwater Stress</h4>
+              <p>Over-extracted aquifers, declining groundwater tables, and deep tubewell electricity demands in 110 over-exploited blocks.</p>
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Scene 2.mp4" data-video-title="Scene 02: Groundwater Stress &amp; Tubewell Reality" data-video-desc="Over-extracted aquifers and deep tubewell reliance across Punjab's 110 critical blocks.">
+                <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
+              </button>
             </div>
           </article>
 
-          <!-- 9:16 Instagram Reel / Mobile Field Video -->
-          <article class="reel-feature-card glass animate-on-scroll">
-            <div class="media-label">
-              <span><i class="fa-brands fa-instagram" style="color:#e1306c;" aria-hidden="true"></i> Field Reel</span>
-              <a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" class="preview-pill instagram-pill" aria-label="View Reel on Instagram">
-                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Open in Instagram
-              </a>
+          <!-- Scene 3 -->
+          <article class="cutout-card glass">
+            <div class="cutout-media-wrapper">
+              <video 
+                class="cutout-video" 
+                playsinline 
+                controls 
+                preload="metadata" 
+                poster="wheat-stress.jpg"
+                aria-label="Scene 03: Wheat Heat Risk">
+                <source src="video/Scene 3.mp4" type="video/mp4">
+              </video>
+              <span class="cutout-badge"><i class="fa-solid fa-temperature-arrow-up" aria-hidden="true"></i> Scene 03 · 00:52</span>
             </div>
-            <div class="phone-mockup">
-              <div class="phone-speaker" aria-hidden="true"></div>
-              <div class="phone-screen">
-                <iframe 
-                  class="instagram-reel-iframe"
-                  src="https://www.instagram.com/reel/DeWF00JKp46/embed" 
-                  title="SADAKHET Punjab Agriculture Instagram Reel (9:16)"
-                  scrolling="no" 
-                  allowtransparency="true" 
-                  allow="encrypted-media"
-                  loading="lazy">
-                </iframe>
-              </div>
+            <div class="cutout-info">
+              <h4>Scene 03: Wheat Terminal Heat</h4>
+              <p>March temperature spikes during wheat grain filling, early canopy senescence, and heat-induced yield losses.</p>
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Scene 3.mp4" data-video-title="Scene 03: Wheat Terminal Heat" data-video-desc="Terminal heatwaves during wheat grain filling and physiological crop stress.">
+                <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
+              </button>
             </div>
-            <div class="reel-card-footer">
-              <a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" class="btn-secondary reel-ig-btn">
-                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Watch &amp; Like on Instagram
-              </a>
+          </article>
+
+          <!-- Scene 4 -->
+          <article class="cutout-card glass">
+            <div class="cutout-media-wrapper">
+              <video 
+                class="cutout-video" 
+                playsinline 
+                controls 
+                preload="metadata" 
+                poster="saline-soil.jpg"
+                aria-label="Scene 04: Flood Aftermath">
+                <source src="video/Scene 4.mp4" type="video/mp4">
+              </video>
+              <span class="cutout-badge"><i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i> Scene 04 · 01:00</span>
+            </div>
+            <div class="cutout-info">
+              <h4>Scene 04: Flood Silt &amp; Soil Impact</h4>
+              <p>Heavy inundation, riverine silt deposition, weed shifts, and the long road to post-monsoon soil rehabilitation.</p>
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Scene 4.mp4" data-video-title="Scene 04: Flood Silt &amp; Soil Impact" data-video-desc="Inundation dynamics and soil recovery following the 2025 Punjab monsoon floods.">
+                <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
+              </button>
+            </div>
+          </article>
+
+          <!-- Scene 5 -->
+          <article class="cutout-card glass">
+            <div class="cutout-media-wrapper">
+              <video 
+                class="cutout-video" 
+                playsinline 
+                controls 
+                preload="metadata" 
+                poster="cracked-earth.jpg"
+                aria-label="Scene 05: Field Adaptation">
+                <source src="video/Scene 5.mp4" type="video/mp4">
+              </video>
+              <span class="cutout-badge"><i class="fa-solid fa-seedling" aria-hidden="true"></i> Scene 05 · 01:52</span>
+            </div>
+            <div class="cutout-info">
+              <h4>Scene 05: Adaptation in Action</h4>
+              <p>Direct seeded rice (DSR), canal water restoration, precision laser levelling, and PAU-recommended practices.</p>
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/Scene 5.mp4" data-video-title="Scene 05: Adaptation in Action" data-video-desc="Practical interventions from DSR adoption to canal water revival in the field.">
+                <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
+              </button>
+            </div>
+          </article>
+
+          <!-- Teaser Cutout -->
+          <article class="cutout-card glass">
+            <div class="cutout-media-wrapper">
+              <video 
+                class="cutout-video" 
+                playsinline 
+                controls 
+                preload="metadata" 
+                poster="hero-bg.jpg"
+                aria-label="Official Project Teaser">
+                <source src="video/teaser.mp4" type="video/mp4">
+              </video>
+              <span class="cutout-badge"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Teaser · 00:24</span>
+            </div>
+            <div class="cutout-info">
+              <h4>Official Research Teaser</h4>
+              <p>A fast-paced 24-second visual overview summarizing the three core agricultural challenges explored in this study.</p>
+              <button type="button" class="btn-secondary cutout-cinema-btn" data-video-src="video/teaser.mp4" data-video-title="Official Research Teaser" data-video-desc="Quick 24-second executive preview of the SADAKHET project.">
+                <i class="fa-solid fa-expand" aria-hidden="true"></i> View in Cinema
+              </button>
             </div>
           </article>
         </div>
@@ -532,17 +624,6 @@
           <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="04 · Climate &amp; Agriculture Cycle" data-desc="Animated infographic tracking seasonal weather shifts, monsoon variability, and crop calendar dynamics."><img src="./banner/punjab-climate-agriculture-loop.gif" alt="Punjab Climate & Agriculture animated loop" loading="lazy" decoding="async"><figcaption>04 · Climate &amp; Agriculture Loop (GIF)</figcaption></figure>
           <figure class="banner-tile banner-interactive" role="button" tabindex="0" data-caption="05 · ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ" data-desc="Changing rainfall patterns and agricultural transitions across Punjab's agro-climatic zones."><img src="./banner/ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ.png" alt="ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ banner" loading="lazy" decoding="async"><figcaption>05 · ਪੰਜਾਬ ਵਿੱਚ ਬਦਲਦਾ ਮੀਂਹ, ਬਦਲਦੀ ਖੇਤੀ</figcaption></figure>
         </div>
-        <div class="media-subhead"><h3>Social-media analytics</h3><p>Verified post links and platform distribution.</p></div>
-        <div class="analytics-wrap glass">
-          <table class="analytics-table">
-            <thead><tr><th scope="col">Platform</th><th scope="col">Profile or channel</th><th scope="col">Content focus</th><th scope="col">Status / Link</th><th scope="col">Period</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Project Teaser</th><td>On-Site Player</td><td>Punjab Fields Under Pressure (16:9)</td><td><a href="#media" style="color:var(--clr-water-deep);font-weight:700;"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Watch Now</a></td><td>Available</td></tr>
-              <tr><th scope="row">Instagram</th><td><a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" style="color:var(--clr-water-deep);font-weight:700;"><i class="fa-brands fa-instagram" aria-hidden="true"></i> @prabhat._.yadav_01</a></td><td>Field video &amp; agriculture report (9:16)</td><td><a href="https://www.instagram.com/reel/DeWF00JKp46/?vrfl=bGM0ZTk1eW5rdzBr" target="_blank" rel="noopener noreferrer" style="color:#e1306c;font-weight:700;">Live Reel</a></td><td>Active</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="analytics-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> No social handles or performance figures were provided, so no audience metrics have been invented.</p>
       </div>
     </section>
 
@@ -577,7 +658,7 @@
         <div class="team-grid">
           <article class="team-card glass animate-on-scroll">
             <div class="team-avatar-wrapper"><img class="team-avatar-photo" src="prabhat-yadav.jpg" alt="Prabhat Yadav" loading="lazy" decoding="async"></div>
-            <div class="team-info"><h3>Prabhat Yadav</h3><span class="team-role">Data, Site &amp; Video Editing</span><p class="team-bio">B.Tech CSE (Robotics &amp; AI)</p><div class="team-socials"><a href="https://www.instagram.com/prabhat._.yadav_01?obrf=NDBhdmVjYmJsN2du" target="_blank" rel="noopener noreferrer" aria-label="Prabhat Yadav on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="https://www.youtube.com/@prabhat._y01" target="_blank" rel="noopener noreferrer" aria-label="Prabhat Yadav on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></div></div>
+            <div class="team-info"><h3>Prabhat Yadav</h3><span class="team-role">Data, Site &amp; Video Editing</span><p class="team-bio">B.Tech CSE (Robotics &amp; AI)</p></div>
           </article>
           <article class="team-card glass animate-on-scroll">
             <div class="team-avatar-wrapper"><img class="team-avatar-photo" src="./team member photo/Rohan Jaswal.jpeg" alt="Rohan Jaswal" loading="lazy" decoding="async"></div>
@@ -585,9 +666,6 @@
               <h3>Rohan Jaswal</h3>
               <span class="team-role">Data &amp; Written Work</span>
               <p class="team-bio">B.Tech CSE (Robotics &amp; AI)</p>
-              <div class="team-socials">
-                <a href="https://instagram.com/rohan__jaswal?cplk=MTd3OXRiZHJtdXd0aA%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Rohan Jaswal on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-              </div>
             </div>
           </article>
           <article class="team-card glass animate-on-scroll">
@@ -596,9 +674,6 @@
               <h3>A Aryan</h3>
               <span class="team-role">Data &amp; Video</span>
               <p class="team-bio">B.Tech CSE (Robotics &amp; AI)</p>
-              <div class="team-socials">
-                <a href="https://www.instagram.com/aryanjsr02?cplk=MWsxZmV2azZ0Ymxkbw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="A Aryan on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-              </div>
             </div>
           </article>
         </div>
@@ -620,6 +695,47 @@
     <button type="button" class="autoplay-close" id="closeAutoplayBanner" aria-label="Dismiss banner">&times;</button>
   </div>
 
+  <!-- Entrance Popup Video Modal (Scene 2) -->
+  <dialog id="scene2PopupModal" class="preview-modal entry-popup-modal" aria-labelledby="scene2PopupTitle">
+    <div class="modal-card glass-dark entry-popup-card">
+      <div class="modal-header entry-popup-header">
+        <div class="modal-badge"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> Featured Field Scene · Scene 02</div>
+        <button type="button" class="entry-popup-close-btn" id="closeScene2Modal" aria-label="Close video popup" title="Close video">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i> Close
+        </button>
+      </div>
+      <div class="modal-body entry-popup-body">
+        <div class="entry-video-wrapper">
+          <video 
+            id="scene2PopupVideo" 
+            class="entry-popup-video"
+            playsinline 
+            controls 
+            preload="auto" 
+            poster="tube-well.jpg"
+            aria-label="Scene 02: Groundwater Stress Video">
+            <source src="video/Scene 2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button type="button" class="entry-unmute-btn" id="entryUnmuteBtn" aria-label="Toggle Sound">
+            <i class="fa-solid fa-volume-high" id="entryUnmuteIcon" aria-hidden="true"></i> <span id="entryUnmuteText">Sound</span>
+          </button>
+        </div>
+        <div class="entry-popup-meta">
+          <div class="entry-meta-info">
+            <h3 id="scene2PopupTitle">Scene 02: Groundwater Stress &amp; Tubewell Reality</h3>
+            <p class="entry-meta-sub">Ground extraction deficits across Punjab's 110 over-exploited blocks (CHE 110 Study)</p>
+          </div>
+          <div class="entry-popup-actions">
+            <button type="button" class="btn-primary entry-continue-btn" id="continueToSiteBtn">
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i> Close Video &amp; Explore Site
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <!-- Documentary Cinema Modal -->
   <dialog id="docModal" class="preview-modal cinema-modal" aria-labelledby="docModalTitle">
     <div class="modal-card glass-dark doc-cinema-modal-card">
@@ -637,7 +753,7 @@
             preload="metadata" 
             poster="hero-bg.jpg"
             aria-label="SADAKHET Punjab Agriculture Teaser Cinema Player">
-            <source src="video/teaser.mp4" type="video/mp4">
+            <source src="video/Final Version.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -645,11 +761,11 @@
           <div class="cinema-meta-header">
             <div>
               <h3 id="docModalTitle">Punjab’s fields, under pressure</h3>
-              <p class="modal-subtitle">SADAKHET Documentary Teaser · CHE 110 Research Study</p>
+              <p class="modal-subtitle" id="docModalSubtitle">SADAKHET Full Documentary · CHE 110 Research Study</p>
             </div>
-            <span class="cinema-tag"><i class="fa-solid fa-video" aria-hidden="true"></i> Official Teaser</span>
+            <span class="cinema-tag" id="docModalBadge"><i class="fa-solid fa-video" aria-hidden="true"></i> Cinema Player</span>
           </div>
-          <p class="doc-cinema-desc">Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation.</p>
+          <p class="doc-cinema-desc" id="docModalDesc">Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation.</p>
         </div>
       </div>
       <div class="modal-footer doc-cinema-footer">

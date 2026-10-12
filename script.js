@@ -372,27 +372,53 @@ if (typeof Chart !== "undefined") {
   }
 }
 
-// Teaser Video & Cinema Modal logic
+// Video Players, Cinema Modal & Scene 2 Entry Popup Logic
 const inlineTeaserVideo = document.getElementById("inlineTeaserVideo");
 const videoCustomOverlay = document.getElementById("videoCustomOverlay");
 const inlinePlayBtn = document.getElementById("inlinePlayBtn");
 const docCinemaBtn = document.getElementById("docPreviewCardBtn");
 const docModal = document.getElementById("docModal");
 const modalTeaserVideo = document.getElementById("modalTeaserVideo");
+const docModalTitle = document.getElementById("docModalTitle");
+const docModalSubtitle = document.getElementById("docModalSubtitle");
+const docModalDesc = document.getElementById("docModalDesc");
 const closeDocModalBtn = document.getElementById("closeDocModal");
 const confirmDocModalBtn = document.getElementById("confirmDocModal");
 
-// Helper to pause background anthem whenever a video is playing
+// Scene 2 Entrance Popup Elements
+const scene2PopupModal = document.getElementById("scene2PopupModal");
+const scene2PopupVideo = document.getElementById("scene2PopupVideo");
+const closeScene2ModalBtn = document.getElementById("closeScene2Modal");
+const continueToSiteBtn = document.getElementById("continueToSiteBtn");
+
+// Helper to pause background anthem whenever any video is playing
 const pauseAnthemForVideo = () => {
   if (anthemAudio && !anthemAudio.paused) {
     anthemAudio.pause();
   }
 };
 
-// Inline Video Controls
+// Helper to pause all other videos when one video plays
+const pauseOtherVideos = (currentPlayingVideo) => {
+  pauseAnthemForVideo();
+  document.querySelectorAll("video").forEach((vid) => {
+    if (vid !== currentPlayingVideo && !vid.paused) {
+      vid.pause();
+    }
+  });
+};
+
+// Attach play event listener to every video on the page to prevent audio overlapping
+document.querySelectorAll("video").forEach((vid) => {
+  vid.addEventListener("play", () => {
+    pauseOtherVideos(vid);
+  });
+});
+
+// Inline Featured Documentary Video Controls
 if (inlineTeaserVideo) {
   const playInlineVideo = () => {
-    pauseAnthemForVideo();
+    pauseOtherVideos(inlineTeaserVideo);
     if (videoCustomOverlay) {
       videoCustomOverlay.classList.add("is-hidden");
     }
@@ -424,39 +450,52 @@ if (inlineTeaserVideo) {
   }
 
   inlineTeaserVideo.addEventListener("play", () => {
-    pauseAnthemForVideo();
+    pauseOtherVideos(inlineTeaserVideo);
     if (videoCustomOverlay) videoCustomOverlay.classList.add("is-hidden");
     if (inlinePlayBtn) {
-      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pause Teaser';
+      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pause Documentary';
     }
   });
 
   inlineTeaserVideo.addEventListener("pause", () => {
     if (inlinePlayBtn) {
-      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> Play Teaser';
+      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> Play Documentary';
     }
   });
 
   inlineTeaserVideo.addEventListener("ended", () => {
     if (videoCustomOverlay) videoCustomOverlay.classList.remove("is-hidden");
     if (inlinePlayBtn) {
-      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Replay Teaser';
+      inlinePlayBtn.innerHTML = '<i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Replay Documentary';
     }
   });
 }
 
 // Cinema Modal Controls
 if (docModal) {
-  const openCinemaModal = () => {
-    pauseAnthemForVideo();
-    if (inlineTeaserVideo) {
-      if (!inlineTeaserVideo.paused) {
-        inlineTeaserVideo.pause();
+  const openCinemaModal = (videoSrc, videoTitle, videoDesc) => {
+    pauseOtherVideos(modalTeaserVideo);
+
+    if (modalTeaserVideo) {
+      if (videoSrc) {
+        // If switching source, update src
+        if (!modalTeaserVideo.currentSrc || !modalTeaserVideo.currentSrc.includes(encodeURI(videoSrc))) {
+          modalTeaserVideo.src = videoSrc;
+        }
+      } else {
+        modalTeaserVideo.src = "video/Final Version.mp4";
       }
-      if (modalTeaserVideo) {
-        try {
-          modalTeaserVideo.currentTime = inlineTeaserVideo.currentTime || 0;
-        } catch (_) {}
+
+      if (videoTitle && docModalTitle) {
+        docModalTitle.textContent = videoTitle;
+      }
+      if (videoDesc && docModalDesc) {
+        docModalDesc.textContent = videoDesc;
+      }
+      if (docModalSubtitle) {
+        docModalSubtitle.textContent = videoTitle && !videoTitle.includes("Full Documentary")
+          ? "Field Scene Cutout · SADAKHET Study"
+          : "SADAKHET Full Documentary · CHE 110 Research Study";
       }
     }
 
@@ -472,11 +511,6 @@ if (docModal) {
   const closeCinemaModal = () => {
     if (modalTeaserVideo) {
       modalTeaserVideo.pause();
-      if (inlineTeaserVideo) {
-        try {
-          inlineTeaserVideo.currentTime = modalTeaserVideo.currentTime || 0;
-        } catch (_) {}
-      }
     }
     if (docModal.open) {
       docModal.close();
@@ -484,8 +518,24 @@ if (docModal) {
   };
 
   if (docCinemaBtn) {
-    docCinemaBtn.addEventListener("click", openCinemaModal);
+    docCinemaBtn.addEventListener("click", () => {
+      openCinemaModal(
+        "video/Final Version.mp4",
+        "Punjab’s fields, under pressure · Full Documentary",
+        "Follow the ground reality of Punjab's agriculture: from tubewell extraction pressure across 110 over-exploited blocks to terminal heatwaves during wheat grain filling and post-flood soil rehabilitation."
+      );
+    });
   }
+
+  // Bind all cutout "View in Cinema" buttons
+  document.querySelectorAll(".cutout-cinema-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const src = btn.getAttribute("data-video-src");
+      const title = btn.getAttribute("data-video-title");
+      const desc = btn.getAttribute("data-video-desc");
+      openCinemaModal(src, title, desc);
+    });
+  });
 
   if (closeDocModalBtn) {
     closeDocModalBtn.addEventListener("click", closeCinemaModal);
@@ -506,14 +556,93 @@ if (docModal) {
       modalTeaserVideo.pause();
     }
   });
+}
 
-  if (modalTeaserVideo) {
-    modalTeaserVideo.addEventListener("play", () => {
-      pauseAnthemForVideo();
-      if (inlineTeaserVideo && !inlineTeaserVideo.paused) {
-        inlineTeaserVideo.pause();
-      }
+// Scene 2 Entrance Popup logic
+if (scene2PopupModal && scene2PopupVideo) {
+  const entryUnmuteBtn = document.getElementById("entryUnmuteBtn");
+  const entryUnmuteIcon = document.getElementById("entryUnmuteIcon");
+  const entryUnmuteText = document.getElementById("entryUnmuteText");
+
+  const updateUnmuteUI = () => {
+    if (!entryUnmuteBtn) return;
+    if (scene2PopupVideo.muted) {
+      if (entryUnmuteIcon) entryUnmuteIcon.className = "fa-solid fa-volume-xmark";
+      if (entryUnmuteText) entryUnmuteText.textContent = "Tap for Sound";
+      entryUnmuteBtn.style.background = "rgba(214, 40, 40, 0.85)";
+    } else {
+      if (entryUnmuteIcon) entryUnmuteIcon.className = "fa-solid fa-volume-high";
+      if (entryUnmuteText) entryUnmuteText.textContent = "Sound On";
+      entryUnmuteBtn.style.background = "rgba(42, 157, 143, 0.85)";
+    }
+  };
+
+  if (entryUnmuteBtn) {
+    entryUnmuteBtn.addEventListener("click", () => {
+      scene2PopupVideo.muted = !scene2PopupVideo.muted;
+      updateUnmuteUI();
     });
+  }
+
+  scene2PopupVideo.addEventListener("volumechange", updateUnmuteUI);
+
+  const openScene2Popup = () => {
+    pauseOtherVideos(scene2PopupVideo);
+
+    if (typeof scene2PopupModal.showModal === "function") {
+      scene2PopupModal.showModal();
+    }
+
+    // Attempt autoplay upon entry
+    const playPromise = scene2PopupVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        updateUnmuteUI();
+      }).catch(() => {
+        // Browser autoplay policy restricted audio; fall back to muted autoplay
+        scene2PopupVideo.muted = true;
+        updateUnmuteUI();
+        scene2PopupVideo.play().catch(() => {});
+      });
+    }
+  };
+
+  const closeScene2Popup = () => {
+    if (scene2PopupVideo) {
+      scene2PopupVideo.pause();
+    }
+    if (scene2PopupModal.open) {
+      scene2PopupModal.close();
+    }
+  };
+
+  if (closeScene2ModalBtn) {
+    closeScene2ModalBtn.addEventListener("click", closeScene2Popup);
+  }
+
+  if (continueToSiteBtn) {
+    continueToSiteBtn.addEventListener("click", closeScene2Popup);
+  }
+
+  scene2PopupModal.addEventListener("click", (e) => {
+    if (e.target === scene2PopupModal) {
+      closeScene2Popup();
+    }
+  });
+
+  scene2PopupModal.addEventListener("close", () => {
+    if (scene2PopupVideo && !scene2PopupVideo.paused) {
+      scene2PopupVideo.pause();
+    }
+  });
+
+  // Automatically trigger Scene 2 popup when user enters the site
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(openScene2Popup, 300);
+  });
+  // Fallback in case DOMContentLoaded has already fired
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(openScene2Popup, 350);
   }
 }
 
