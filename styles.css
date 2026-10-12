@@ -1651,10 +1651,12 @@ html {
     margin-top: auto;
     width: 100%;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 
 .doc-play-inline-btn {
-    flex: 1;
+    flex: 1.2;
+    min-width: 200px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1665,54 +1667,105 @@ html {
     cursor: pointer;
 }
 
-.doc-cinema-open-btn {
+/* Video External Link Tabs */
+.video-tabs-group {
+    display: flex;
+    gap: 10px;
+    flex: 1 1 240px;
+    align-items: stretch;
+}
+
+.video-tab-btn {
     flex: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    padding: 13px 20px;
-    font-size: 0.94rem;
+    gap: 8px;
+    padding: 12px 18px;
+    font-size: 0.92rem;
     font-weight: 700;
     font-family: var(--font-body);
     border-radius: 50px;
+    text-decoration: none;
     cursor: pointer;
-    background: #ffffff;
-    color: var(--clr-water-deep) !important;
-    border: 2px solid var(--clr-water-deep);
     box-shadow:
-        0 4px 0 rgba(0, 119, 182, 0.22),
-        0 8px 20px rgba(0, 119, 182, 0.12),
+        0 3px 10px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+}
+
+.video-tab-btn i {
+    font-size: 1.15rem;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+/* YouTube Tab */
+.youtube-tab-btn {
+    background: #ffffff;
+    color: #cc0000 !important;
+    border: 2px solid #e62117;
+    box-shadow:
+        0 4px 12px rgba(230, 33, 23, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.doc-cinema-open-btn i {
-    color: var(--clr-water-deep);
-    transition: color 0.35s ease, transform 0.35s ease;
+.youtube-tab-btn i {
+    color: #ff0000;
 }
 
-.doc-cinema-open-btn:hover {
-    background: linear-gradient(145deg, #2fcfbe 0%, #0096c7 50%, #0077b6 100%);
+.youtube-tab-btn:hover {
+    background: linear-gradient(135deg, #ff1a2b 0%, #cc0000 100%);
     color: #ffffff !important;
     border-color: transparent;
-    transform: translateY(-4px) scale(1.02);
+    transform: translateY(-3px) scale(1.02);
     box-shadow:
-        0 8px 0 rgba(0, 60, 100, 0.45),
-        0 14px 30px rgba(0, 119, 182, 0.4),
+        0 8px 20px rgba(204, 0, 0, 0.38),
         inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.doc-cinema-open-btn:hover i {
+.youtube-tab-btn:hover i {
     color: #ffffff;
-    transform: scale(1.15);
+    transform: scale(1.2);
 }
 
-.doc-cinema-open-btn:active {
+.youtube-tab-btn:active {
     transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(204, 0, 0, 0.25);
+}
+
+/* Instagram Tab */
+.insta-tab-btn {
+    background: #ffffff;
+    color: #c13584 !important;
+    border: 2px solid #e1306c;
     box-shadow:
-        0 2px 0 rgba(0, 60, 100, 0.45),
-        0 4px 12px rgba(0, 119, 182, 0.3);
+        0 4px 12px rgba(225, 48, 108, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.insta-tab-btn i {
+    color: #e1306c;
+}
+
+.insta-tab-btn:hover {
+    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    color: #ffffff !important;
+    border-color: transparent;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 8px 20px rgba(225, 48, 108, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.insta-tab-btn:hover i {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.insta-tab-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(225, 48, 108, 0.25);
 }
 
 .doc-card-body {
@@ -1888,45 +1941,19 @@ html {
     flex: 1;
 }
 
-.cutout-cinema-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.cutout-actions {
+    display: flex;
     gap: 8px;
+    margin-top: auto;
     width: 100%;
+}
+
+.cutout-actions .video-tab-btn {
+    width: 100%;
+    border-radius: 12px;
     padding: 11px 16px;
     font-size: 0.88rem;
-    font-weight: 700;
-    font-family: var(--font-body);
-    border-radius: 12px;
-    cursor: pointer;
-    border: 1.5px solid rgba(0, 119, 182, 0.45);
-    color: var(--clr-water-deep) !important;
-    background: rgba(0, 119, 182, 0.08);
-    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.08);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.cutout-cinema-btn i {
-    color: var(--clr-water-deep);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.cutout-cinema-btn:hover {
-    background: linear-gradient(135deg, var(--clr-agri-green), var(--clr-water-deep));
-    color: #ffffff !important;
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 119, 182, 0.32);
-}
-
-.cutout-cinema-btn:hover i {
-    color: #ffffff;
-    transform: scale(1.15);
-}
-
-.cutout-cinema-btn:active {
-    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Responsive UI Consistency for Media & Modals across Mobile and Desktop */
@@ -1962,6 +1989,34 @@ html {
     }
 
     .doc-card-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .doc-play-inline-btn {
+        width: 100%;
+    }
+
+    .video-tabs-group {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    .video-tabs-group .video-tab-btn {
+        flex: 1;
+        padding: 11px 12px;
+        font-size: 0.88rem;
+    }
+
+    .cutout-actions .video-tab-btn {
+        padding: 11px 14px;
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .video-tabs-group {
         flex-direction: column;
         gap: 8px;
     }
